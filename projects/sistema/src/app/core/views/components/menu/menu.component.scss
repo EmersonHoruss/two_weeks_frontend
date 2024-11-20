@@ -2,8 +2,9 @@ a {
   text-decoration: none !important;
 }
 
-a span {
-  color: rgba(255, 255, 255, 0.5);
+a span,
+a mat-icon {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 a:hover span,
