@@ -1,0 +1,22 @@
+mat-toolbar {
+  background-color: white !important;
+  border-bottom: 2px solid #6b6b6b2b;
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile {
+  height: 100%;
+}
+
+.profile .profile-content {
+  display: flex;
+  align-items: center;
+}
+
+.profile img {
+  max-width: 50px;
+  border-radius: 50%;
+  border: 1px solid #6b6b6b2b;
+  margin-right: 10px;
+}

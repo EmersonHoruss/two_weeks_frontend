@@ -1,0 +1,38 @@
+<form [formGroup]="group">
+  <h1>History System</h1>
+
+  <h2>Credentials</h2>
+  <mat-form-field appearance="outline" (ngSubmit)="login()">
+    <mat-label>Email</mat-label>
+    <input
+      type="text"
+      matInput
+      placeholder="my_email@gmail.com"
+      formControlName="email"
+      name="email"
+      (keydown.enter)="login()"
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input
+      type="password"
+      matInput
+      placeholder="123asdf@_-,"
+      formControlName="password"
+      name="password"
+      (keydown.enter)="login()"
+    />
+  </mat-form-field>
+
+  <button
+    type="button"
+    mat-flat-button
+    color="primary"
+    (click)="login()"
+    [disabled]="group.invalid"
+  >
+    Login
+  </button>
+</form>

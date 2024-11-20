@@ -1,0 +1,19 @@
+<mat-nav-list>
+  <mat-list-item *ngFor="let menuItem of menu" routerLinkActive="active-link">
+    <a routerLink="{{ menuItem.url }}">
+      <button mat-icon-button class="hi">
+        <div>
+          <mat-icon
+            *ngIf="menuItem.foreignToMaterial; else foreignToMaterial"
+            [svgIcon]="menuItem.icon"
+          ></mat-icon>
+          <ng-template #foreignToMaterial>
+            <mat-icon color="secondary">{{ menuItem.icon }}</mat-icon>
+          </ng-template>
+        </div>
+
+        <span class="title">{{ menuItem.title }}</span>
+      </button>
+    </a>
+  </mat-list-item>
+</mat-nav-list>

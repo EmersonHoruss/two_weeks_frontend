@@ -1,0 +1,40 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+
+  background-image: url(/assets/img/login-background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.presentation {
+  flex: 1 1 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+  padding-left: 80px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img {
+  width: 250px;
+  height: 250px;
+}
+
+h1 {
+  color: white;
+}
+
+.login {
+  flex: 1 1 30%;
+}

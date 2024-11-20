@@ -1,0 +1,26 @@
+a {
+  text-decoration: none !important;
+}
+
+a span {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+a:hover span,
+a:hover mat-icon {
+  color: white !important;
+}
+
+.active-link {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white !important;
+}
+
+.active-link span {
+  color: white !important;
+}
+
+.hi {
+  display: flex;
+  gap: 0.5rem;
+}
