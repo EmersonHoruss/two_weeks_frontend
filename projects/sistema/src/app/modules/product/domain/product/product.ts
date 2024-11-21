@@ -24,7 +24,6 @@ export type ProductUpdate = Partial<{
   type: string;
   brand: string;
   size: string;
-  stock: number;
   purchasePrice: number;
   sellPriceNormal: number;
   sellPriceWholesale1: number;
