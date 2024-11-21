@@ -10,10 +10,14 @@ export class OperationFactory {
       productId,
     };
 
-    if (!type) throw new Error('Falta el tipo de la operación');
-    if (!amount) throw new Error('Falta la cantidad de la operación');
-    if (!date) throw new Error('Falta la fecha de la operación');
-    if (!productId) throw new Error('Falta el Id del producto de la operación');
+    if (type === null || type === undefined)
+      throw new Error('Falta el tipo de la operación');
+    if (amount === null || amount === undefined)
+      throw new Error('Falta la cantidad de la operación');
+    if (date === null || date === undefined)
+      throw new Error('Falta la fecha de la operación');
+    if (productId === null || productId === undefined)
+      throw new Error('Falta el Id del producto de la operación');
 
     if (typeof amount !== 'number')
       throw new Error('La cantidad debe ser numérica');
