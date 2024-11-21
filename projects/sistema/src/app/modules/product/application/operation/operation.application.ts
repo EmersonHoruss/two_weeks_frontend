@@ -3,6 +3,7 @@ import { BaseApplication } from '../../../../shared/application/base.application
 import { Operation, OperationType } from '../../domain/operation/operation';
 import { OperationRepository } from '../../domain/operation/operation.repository';
 import { OperationInfrastructure } from '../../infrastructure/operation/operation.infrastructure';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class OperationApplication extends BaseApplication<
@@ -16,12 +17,12 @@ export class OperationApplication extends BaseApplication<
     super(operationRepository);
   }
 
-  override insert(operation: Operation, product_stock?: number) {
+  override insert(operation: Operation): Observable<any> {
     const operationProperties = operation.properties();
-    if (
-      operationProperties.type === OperationType.Subtract &&
-      operationProperties.amount > product_stock
-    ) {
+    const { type, amount, product } = operationProperties;
+    const { stock } = product.properties();
+
+    if (type === OperationType.Subtract && amount > stock) {
       throw new Error(
         'Creación de operación fallida: no se puede quitar una cantidad menor a la que hay en stock.'
       );

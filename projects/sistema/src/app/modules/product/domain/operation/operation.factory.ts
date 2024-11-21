@@ -1,13 +1,13 @@
 import { Operation, OperationProperties } from './operation';
 
 export class OperationFactory {
-  create({ id, type, amount, date, productId }) {
+  create({ id, type, amount, date, product }) {
     const operationProperties: OperationProperties = {
       id,
       type,
       amount,
       date,
-      productId,
+      product,
     };
 
     if (type === null || type === undefined)
@@ -16,7 +16,7 @@ export class OperationFactory {
       throw new Error('Falta la cantidad de la operación');
     if (date === null || date === undefined)
       throw new Error('Falta la fecha de la operación');
-    if (productId === null || productId === undefined)
+    if (product === null || product === undefined)
       throw new Error('Falta el Id del producto de la operación');
 
     if (typeof amount !== 'number')

@@ -1,3 +1,5 @@
+import { Product } from '../product/product';
+
 export enum OperationType {
   Add = 'Add',
   Subtract = 'Subtract',
@@ -7,12 +9,11 @@ export interface OperationRequired {
   type: OperationType;
   amount: number;
   date: Date;
-  productId: number;
+  product: Product;
 }
 
 export interface OperationOptional {
   id: number;
-  
 }
 
 export type OperationProperties = Required<OperationRequired> &
@@ -23,7 +24,7 @@ export class Operation {
   private type: OperationType;
   private amount: number;
   private date: Date;
-  private productId: number;
+  private product: Product;
 
   constructor(properties: OperationProperties) {
     this.date = new Date();
@@ -36,7 +37,7 @@ export class Operation {
       type: this.type,
       amount: this.amount,
       date: this.date,
-      productId: this.productId,
+      product: this.product,
     };
   }
 }
