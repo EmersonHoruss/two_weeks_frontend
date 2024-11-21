@@ -13,6 +13,10 @@ import { AuthApplication } from './core/application/auth.application';
 import { StorageInfrastructure } from './core/infrastructure/storage.infrastructure';
 import { StorageApplication } from './core/application/storage.application';
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
+import { OperationInfrastructure } from './modules/product/infrastructure/operation/operation.infrastructure';
+import { OperationApplication } from './modules/product/application/operation/operation.application';
+import { ProductInfrastructure } from './modules/product/infrastructure/product/product.infrastructure';
+import { ProductApplication } from './modules/product/application/product/product.application';
 
 const angular = [
   provideZoneChangeDetection({ eventCoalescing: true }),
@@ -25,10 +29,14 @@ const layout = [{ provide: LAYOUT_TOKEN, useValue: layoutConstant }];
 const infraestructure = [
   AuthInfrastructure,
   StorageInfrastructure,
+  OperationInfrastructure,
+  ProductInfrastructure,
 ];
 const application = [
   AuthApplication,
   StorageApplication,
+  OperationApplication,
+  ProductApplication,
 ];
 const interceptors = [
   { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
