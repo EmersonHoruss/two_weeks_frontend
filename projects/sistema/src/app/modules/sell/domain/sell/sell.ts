@@ -1,7 +1,26 @@
-export interface SellRequired {}
+import { DetailSell } from '../detail-sell/detail-sell';
+
+export enum SellStatus {
+  Creandose = 'Creandose',
+  Creado = 'Creado',
+}
+
+export enum PaymentMethod {
+  Ticket = 'Ticket',
+  Boleta = 'Boleta',
+  Factura = 'Factura',
+}
+
+export interface SellRequired {
+  date: Date;
+  totalAmount: number;
+  paymentMethod: PaymentMethod;
+  status: SellStatus;
+}
 
 export interface SellOptional {
   id: number;
+  detailSells: Array<DetailSell>;
   activated: boolean;
 }
 
