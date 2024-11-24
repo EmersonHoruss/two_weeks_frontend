@@ -1,16 +1,16 @@
 import { Profile } from '../profile/profile';
 
 export enum Role {
-  ROLE_ADMIN = 'ROLE_ADMIN',
-  ROLE_VISITOR = 'ROLE_VISITOR',
-  ROLE_SELLER = 'ROLE_SELLER',
-  ROLE_CASHIER = 'ROLE_CASHIER',
+  Admin = 'ROLE_ADMIN',
+  Visitor = 'ROLE_VISITOR',
+  Seller = 'ROLE_SELLER',
+  Cashier = 'ROLE_CASHIER',
 }
 
 export enum UserStatus {
-  ACTIVE = 'ACTIVE',
-  OUT = 'OUT',
-  ON_VACATION = 'ON_VACATION',
+  Active = 'activo',
+  Out = 'retirado',
+  OnVacation = 'de vacaciones',
 }
 
 export interface UserRequired {
@@ -46,10 +46,10 @@ export class User {
 
   constructor(properties: UserProperties) {
     Object.assign(this, properties);
-    
+
     this.activated = true;
-    this.userStatus = UserStatus.ACTIVE;
-    this.roles = [Role.ROLE_VISITOR];
+    this.userStatus = UserStatus.Active;
+    this.roles = [Role.Visitor];
   }
 
   properties(): UserProperties {

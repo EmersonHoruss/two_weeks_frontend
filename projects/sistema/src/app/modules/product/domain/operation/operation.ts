@@ -1,8 +1,8 @@
 import { Product } from '../product/product';
 
 export enum OperationType {
-  Add = 'Add',
-  Subtract = 'Subtract',
+  Add = 'Agregar',
+  Subtract = 'Quitar',
 }
 
 export interface OperationRequired {
@@ -28,7 +28,7 @@ export class Operation {
 
   constructor(properties: OperationProperties) {
     Object.assign(this, properties);
-    
+
     this.date = new Date();
   }
 

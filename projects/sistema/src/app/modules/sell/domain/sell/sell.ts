@@ -1,14 +1,18 @@
+import { User } from '../../../user/domain/user/user';
+import { Customer } from '../customer/customer';
 import { DetailSell } from '../detail-sell/detail-sell';
 
 export enum SellStatus {
-  Creandose = 'Creandose',
-  Creado = 'Creado',
+  Creating = 'Creandose',
+  Created = 'Creado',
+  Issued = 'Emitido',
+  Delivered = 'Entregado',
 }
 
 export enum PaymentMethod {
   Ticket = 'Ticket',
-  Boleta = 'Boleta',
-  Factura = 'Factura',
+  Receipt = 'Boleta',
+  Invoice = 'Factura',
 }
 
 export interface SellRequired {
@@ -16,12 +20,15 @@ export interface SellRequired {
   totalAmount: number;
   paymentMethod: PaymentMethod;
   status: SellStatus;
+  seller: User;
+  debtCollector: User;
 }
 
 export interface SellOptional {
   id: number;
   detailSells: Array<DetailSell>;
   activated: boolean;
+  customer: Customer;
 }
 
 export type SellProperties = Required<SellRequired> & Partial<SellOptional>;
@@ -34,7 +41,7 @@ export class Sell {
 
   constructor(properties: SellProperties) {
     Object.assign(this, properties);
-    
+
     this.activated = true;
   }
 
