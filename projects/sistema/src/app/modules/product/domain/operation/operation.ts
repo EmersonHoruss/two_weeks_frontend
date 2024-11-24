@@ -8,7 +8,7 @@ export enum OperationType {
 export interface OperationRequired {
   type: OperationType;
   amount: number;
-  date: Date;
+  date: string;
   product: Product;
 }
 
@@ -23,13 +23,13 @@ export class Operation {
   private readonly id: number;
   private type: OperationType;
   private amount: number;
-  private date: Date;
+  private date: string;
   private product: Product;
 
   constructor(properties: OperationProperties) {
     Object.assign(this, properties);
 
-    this.date = new Date();
+    this.date = new Date().toUTCString()
   }
 
   properties(): OperationProperties {
