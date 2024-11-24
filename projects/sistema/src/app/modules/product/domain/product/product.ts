@@ -45,9 +45,10 @@ export class Product {
   private activated: boolean;
 
   constructor(properties: ProductProperties) {
+    Object.assign(this, properties);
+    
     this.activated = true;
     this.name = `${properties.type} ${properties.brand} ${properties.size}`;
-    Object.assign(this, properties);
   }
 
   properties(): ProductProperties {

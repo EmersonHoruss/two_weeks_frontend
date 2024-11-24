@@ -34,9 +34,10 @@ export class DetailSell {
   private product: Product;
 
   constructor(properties: DetailSellProperties) {
+    Object.assign(this, properties);
+    
     this.activated = true;
     this.totalPrice = properties.amount * properties.price;
-    Object.assign(this, properties);
   }
 
   properties(): DetailSellProperties {

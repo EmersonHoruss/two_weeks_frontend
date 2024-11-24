@@ -27,8 +27,9 @@ export class Operation {
   private product: Product;
 
   constructor(properties: OperationProperties) {
-    this.date = new Date();
     Object.assign(this, properties);
+    
+    this.date = new Date();
   }
 
   properties(): OperationProperties {

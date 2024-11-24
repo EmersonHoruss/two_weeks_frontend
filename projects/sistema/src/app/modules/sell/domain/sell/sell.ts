@@ -33,8 +33,9 @@ export class Sell {
   private activated: boolean;
 
   constructor(properties: SellProperties) {
-    this.activated = true;
     Object.assign(this, properties);
+    
+    this.activated = true;
   }
 
   properties(): SellProperties {

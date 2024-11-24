@@ -45,10 +45,11 @@ export class User {
   private userStatus: UserStatus;
 
   constructor(properties: UserProperties) {
+    Object.assign(this, properties);
+    
     this.activated = true;
     this.userStatus = UserStatus.ACTIVE;
     this.roles = [Role.ROLE_VISITOR];
-    Object.assign(this, properties);
   }
 
   properties(): UserProperties {
