@@ -68,6 +68,8 @@ export class Product {
   }
 
   update(fields: ProductUpdate) {
+    Object.assign(this, fields);
+
     let { type, brand, size } = fields;
     if (
       type !== null ||
@@ -83,8 +85,6 @@ export class Product {
 
       this.name = `${type} ${brand} ${size}`;
     }
-
-    Object.assign(this, fields);
   }
 
   delete() {

@@ -52,6 +52,8 @@ export class DetailSell {
   }
 
   update(fields: DetailSellUpdate) {
+    Object.assign(this, fields);
+
     let { price, amount } = fields;
     if (
       price !== null ||
@@ -64,8 +66,6 @@ export class DetailSell {
 
       this.totalPrice = price * amount;
     }
-
-    Object.assign(this, fields);
   }
 
   delete() {
