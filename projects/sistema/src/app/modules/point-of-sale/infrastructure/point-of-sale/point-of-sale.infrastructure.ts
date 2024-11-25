@@ -10,6 +10,6 @@ export class PointOfSaleInfrastructure
   implements PointOfSaleRepository
 {
   constructor(protected readonly httpClient: HttpClient) {
-    super(httpClient, '/point-of-sales');
+    super(httpClient, '/point_of_sales');
   }
 }

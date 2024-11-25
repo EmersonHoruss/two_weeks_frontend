@@ -10,6 +10,6 @@ export class DetailSellInfrastructure
   implements DetailSellRepository
 {
   constructor(protected readonly httpClient: HttpClient) {
-    super(httpClient, '/detail-sells');
+    super(httpClient, '/detail_sells');
   }
 }
