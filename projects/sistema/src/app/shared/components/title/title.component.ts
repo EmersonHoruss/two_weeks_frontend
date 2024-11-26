@@ -3,10 +3,10 @@ import { Menu, MenuService } from '../../services/menu.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-    selector: 'amb-title',
-    templateUrl: './title.component.html',
-    styleUrl: './title.component.scss',
-    standalone: false
+  selector: 'tw-title',
+  templateUrl: './title.component.html',
+  styleUrl: './title.component.scss',
+  standalone: false,
 })
 export class TitleComponent {
   itemMenu!: Menu;

@@ -12,10 +12,10 @@ import { MetaColumn } from '../../interfaces/metacolumn.interface';
 import { MatColumnDef, MatTable } from '@angular/material/table';
 
 @Component({
-    selector: 'amb-table',
-    templateUrl: './table.component.html',
-    styleUrl: './table.component.scss',
-    standalone: false
+  selector: 'tw-table',
+  templateUrl: './table.component.html',
+  styleUrl: './table.component.scss',
+  standalone: false,
 })
 export class TableComponent implements OnInit {
   listFields: string[] = [];

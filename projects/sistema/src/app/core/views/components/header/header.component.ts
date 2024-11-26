@@ -2,10 +2,10 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { AuthApplication } from '../../../application/auth.application';
 
 @Component({
-    selector: 'amb-header',
-    templateUrl: './header.component.html',
-    styleUrl: './header.component.scss',
-    standalone: false
+  selector: 'tw-header',
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.scss',
+  standalone: false,
 })
 export class HeaderComponent {
   @Output() onToggleMenu: EventEmitter<void> = new EventEmitter();

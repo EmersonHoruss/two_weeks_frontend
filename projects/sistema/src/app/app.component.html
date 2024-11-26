@@ -3,14 +3,14 @@
     <div class="logo">
       <!-- <mat-icon svgIcon="logo"></mat-icon> -->
     </div>
-    <amb-menu></amb-menu>
+    <tw-menu></tw-menu>
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <amb-header
+    <tw-header
       (onToggleMenu)="isOpened = !isOpened"
       *ngIf="!layout.headerHidden"
-    ></amb-header>
+    ></tw-header>
 
     <router-outlet />
   </mat-sidenav-content>

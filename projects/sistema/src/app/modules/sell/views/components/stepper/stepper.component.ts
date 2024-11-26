@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'amb-stepper',
+  selector: 'tw-stepper',
   imports: [],
   templateUrl: './stepper.component.html',
-  styleUrl: './stepper.component.scss'
+  styleUrl: './stepper.component.scss',
 })
-export class StepperComponent {
-
-}
+export class StepperComponent {}

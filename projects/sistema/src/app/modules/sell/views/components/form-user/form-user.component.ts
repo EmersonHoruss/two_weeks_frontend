@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'amb-form-user',
+  selector: 'tw-form-user',
   imports: [],
   templateUrl: './form-user.component.html',
-  styleUrl: './form-user.component.scss'
+  styleUrl: './form-user.component.scss',
 })
-export class FormUserComponent {
-
-}
+export class FormUserComponent {}

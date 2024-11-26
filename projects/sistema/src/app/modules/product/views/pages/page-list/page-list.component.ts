@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'amb-page-list',
+  selector: 'tw-page-list',
   imports: [],
   templateUrl: './page-list.component.html',
-  styleUrl: './page-list.component.scss'
+  styleUrl: './page-list.component.scss',
 })
-export class PageListComponent {
-
-}
+export class PageListComponent {}

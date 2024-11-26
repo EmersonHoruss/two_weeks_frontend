@@ -7,10 +7,10 @@ import { AuthFactory } from '../../../domain/auth-factory';
 import { StorageApplication } from '../../../application/storage.application';
 
 @Component({
-    selector: 'amb-login',
-    templateUrl: './login.component.html',
-    styleUrl: './login.component.scss',
-    standalone: false
+  selector: 'tw-login',
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.scss',
+  standalone: false,
 })
 export class LoginComponent {
   group: FormGroup;

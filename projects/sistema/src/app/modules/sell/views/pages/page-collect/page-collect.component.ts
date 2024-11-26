@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'amb-page-collect',
+  selector: 'tw-page-collect',
   imports: [],
   templateUrl: './page-collect.component.html',
-  styleUrl: './page-collect.component.scss'
+  styleUrl: './page-collect.component.scss',
 })
-export class PageCollectComponent {
-
-}
+export class PageCollectComponent {}

@@ -12,7 +12,7 @@
       },
       "root": "projects/sistema",
       "sourceRoot": "projects/sistema/src",
-      "prefix": "amb",
+      "prefix": "tw",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
