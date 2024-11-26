@@ -16,15 +16,9 @@ export class MenuService {
   constructor() {
     this.menu = [
       {
-        title: 'Vender',
-        url: '/vender',
-        icon: 'shopping_cart',
-        foreignToMaterial: false,
-      },
-      {
-        title: 'Ventas',
-        url: '/ventas',
-        icon: 'confirmation_number',
+        title: 'Caja',
+        url: '/caja',
+        icon: 'point_of_sale',
         foreignToMaterial: false,
       },
       {
@@ -34,9 +28,27 @@ export class MenuService {
         foreignToMaterial: false,
       },
       {
-        title: 'Caja',
-        url: '/caja',
-        icon: 'local_atm',
+        title: 'Vender',
+        url: '/ventas/vender',
+        icon: 'shopping_cart',
+        foreignToMaterial: false,
+      },
+      {
+        title: 'Cobrar',
+        url: '/ventas/cobrar',
+        icon: 'price_check',
+        foreignToMaterial: false,
+      },
+      {
+        title: 'Ventas',
+        url: '/ventas',
+        icon: 'confirmation_number',
+        foreignToMaterial: false,
+      },
+      {
+        title: 'Usuarios',
+        url: '/usuarios',
+        icon: 'person',
         foreignToMaterial: false,
       },
     ];

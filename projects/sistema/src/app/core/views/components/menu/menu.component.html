@@ -1,5 +1,9 @@
 <mat-nav-list>
-  <mat-list-item *ngFor="let menuItem of menu" routerLinkActive="active-link">
+  <mat-list-item
+    *ngFor="let menuItem of menu"
+    routerLinkActive="active-link"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
     <a routerLink="{{ menuItem.url }}">
       <button mat-icon-button class="hi">
         <div>

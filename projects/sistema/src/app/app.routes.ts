@@ -1,17 +1,28 @@
 import { Routes } from '@angular/router';
-import { PageLoginComponent } from './core/views/pages/page-login/page-login.component';
-import { AuthenticationGuard } from './shared/guards/authentication.guard';
 
 export const routes: Routes = [
-  // {
-  //   path: '',
-  //   loadChildren: () =>
-  //     import('./user/user.module').then((module) => module.UserModule),
-  // },
-  // {
-  //   path: 'user',
-  //   loadChildren: () =>
-  //     import('./user/user.module').then((module) => module.UserModule),
-  //   // canLoad: [AuthenticationGuard],
-  // },
+  {
+    path: 'caja',
+    loadChildren: () =>
+      import('./modules/point-of-sale/point-of-sale.module').then(
+        (module) => module.PointOfSaleModule
+      ),
+  },
+  {
+    path: 'productos',
+    loadChildren: () =>
+      import('./modules/product/product.module').then(
+        (module) => module.ProductModule
+      ),
+  },
+  {
+    path: 'ventas',
+    loadChildren: () =>
+      import('./modules/sell/sell.module').then((module) => module.SellModule),
+  },
+  {
+    path: 'usuarios',
+    loadChildren: () =>
+      import('./modules/user/user.module').then((module) => module.UserModule),
+  },
 ];
