@@ -1,2 +1,34 @@
-<p>page-list works!</p>
-products
+<tw-title>
+  <button mat-flat-button color="primary" btnAction (click)="showModalWindow()">
+    <mat-icon>add</mat-icon>
+    Agregar
+  </button>
+</tw-title>
+
+<tw-container>
+  <div class="page-list-content scrollable-container scroll">
+    <tw-table [metaColumns]="metaColumns" [dataSource]="dataSource">
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let row">
+          <button
+            mat-icon-button
+            color="primary"
+            (click)="showModalWindow(row)"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button mat-icon-button color="accent" (click)="delete(row?.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+    </tw-table>
+  </div>
+  <tw-paginator
+    [length]="quantityRecords"
+    [pageSize]="pageSize"
+    (onChangePage)="getRecordsByPage($event)"
+  ></tw-paginator>
+</tw-container>
