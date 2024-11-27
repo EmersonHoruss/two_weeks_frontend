@@ -1,4 +1,4 @@
-import { ProductShowDto } from '../product/productDto';
+import { ProductShowDto } from '../product/product.dto';
 
 export interface OperationCreateDto {
   type: string;

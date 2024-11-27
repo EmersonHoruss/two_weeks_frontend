@@ -7,7 +7,6 @@ export interface ProductCreateDto {
   sellPriceNormal: number;
   sellPriceWholesale1: number;
   sellPriceWholesale2: number;
-  name: string;
   code: string;
 }
 
@@ -20,7 +19,6 @@ export interface ProductUpdateDto {
   sellPriceNormal: number;
   sellPriceWholesale1: number;
   sellPriceWholesale2: number;
-  name: string;
   code: string;
 }
 
