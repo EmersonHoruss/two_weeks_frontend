@@ -19,6 +19,8 @@ export interface OperationOptional {
 export type OperationProperties = Required<OperationRequired> &
   Partial<OperationOptional>;
 
+export type OperationUpdate = Partial<{}>;
+
 export class Operation {
   private readonly id: number;
   private type: OperationType;
@@ -29,7 +31,7 @@ export class Operation {
   constructor(properties: OperationProperties) {
     Object.assign(this, properties);
 
-    this.date = new Date().toUTCString()
+    this.date = new Date().toUTCString();
   }
 
   properties(): OperationProperties {

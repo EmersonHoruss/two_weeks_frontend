@@ -1,15 +1,17 @@
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs';
+import { ResponseDto } from '../application/dtos/response.dto';
 
-export interface BaseRepository<Entity> {
-  insert(entity: Entity): Observable<any>;
+export interface BaseRepository<CreateDto, UpdateDto, ShowDto> {
+  create(entity: CreateDto): Observable<ResponseDto<ShowDto>>;
 
-  list(): Observable<any>;
+  update(entity: UpdateDto): Observable<ResponseDto<ShowDto>>;
 
-  listOne(id: number): Observable<any>;
+  listOne(id: number): Observable<ResponseDto<ShowDto>>;
 
-  update(entity: Entity): Observable<any>;
+  list(request: string): Observable<ResponseDto<ShowDto>>;
 
-  delete(id: number): Observable<any>;
-
-  page(page: number): Observable<any>;
+  setActivation(
+    id: number,
+    activation: boolean
+  ): Observable<ResponseDto<ShowDto>>;
 }

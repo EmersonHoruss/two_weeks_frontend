@@ -1,4 +1,13 @@
 import { BaseRepository } from '../../../../shared/domain/base.repository';
-import { Operation } from './operation';
+import {
+  OperationCreateDto,
+  OperationShowDto,
+  OperationUpdateDto,
+} from '../../application/operation/operation.dto';
 
-export interface OperationRepository extends BaseRepository<Operation> {}
+export interface OperationRepository
+  extends BaseRepository<
+    OperationCreateDto,
+    OperationUpdateDto,
+    OperationShowDto
+  > {}

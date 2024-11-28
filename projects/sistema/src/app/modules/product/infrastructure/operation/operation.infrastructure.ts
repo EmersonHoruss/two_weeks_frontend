@@ -3,25 +3,33 @@ import { BaseInfrastructure } from '../../../../shared/infrastructure/base.infra
 import { Operation } from '../../domain/operation/operation';
 import { OperationRepository } from '../../domain/operation/operation.repository';
 import { HttpClient } from '@angular/common/http';
+import {
+  OperationCreateDto,
+  OperationShowDto,
+} from '../../application/operation/operation.dto';
 
 @Injectable()
 export class OperationInfrastructure
-  extends BaseInfrastructure<Operation>
+  extends BaseInfrastructure<
+    OperationCreateDto,
+    OperationCreateDto,
+    OperationShowDto
+  >
   implements OperationRepository
 {
   constructor(protected readonly httpClient: HttpClient) {
     super(httpClient, '/operations');
   }
 
-  override update(entity: Operation): never {
+  override update(entity: OperationCreateDto): never {
     throw new Error(
-      'El método "actualizar" no está soportado por la entidad Operación.'
+      'El método "actualizar" no está permitido por la entidad Operación.'
     );
   }
 
-  override delete(id: number): never {
+  override setActivation(id: number, activation: boolean): never {
     throw new Error(
-      'El método "eliminar" no está soportado por la entidad operación.'
+      'El método "eliminar lógicamente" no está permitido por la entidad Operación.'
     );
   }
 }

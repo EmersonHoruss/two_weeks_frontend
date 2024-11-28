@@ -20,6 +20,7 @@ export type ProductProperties = Required<ProductRequired> &
   Partial<ProductOptional>;
 
 export type ProductUpdate = Partial<{
+  id: number;
   code: string;
   type: string;
   brand: string;
@@ -46,7 +47,7 @@ export class Product {
 
   constructor(properties: ProductProperties) {
     Object.assign(this, properties);
-    
+
     this.activated = true;
     this.name = `${properties.type} ${properties.brand} ${properties.size}`;
   }

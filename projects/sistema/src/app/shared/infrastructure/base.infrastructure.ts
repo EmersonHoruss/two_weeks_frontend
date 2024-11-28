@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
+import { ResponseDto } from '../application/dtos/response.dto';
 
-export abstract class BaseInfrastructure<Entity> {
+export abstract class BaseInfrastructure<CreateDto, UpdateDto, ShowDto> {
   private apiUrl = `${environment.apiUrl}`;
 
   constructor(
@@ -12,28 +13,29 @@ export abstract class BaseInfrastructure<Entity> {
     this.apiUrl = this.apiUrl + this.endpoint;
   }
 
-  insert(entity: Entity): Observable<any> {
-    return this.http.post(this.apiUrl, entity);
+  create(createDto: CreateDto): Observable<ResponseDto<ShowDto>> {
+    return this.http.post<ResponseDto<ShowDto>>(this.apiUrl, createDto);
   }
 
-  list() {
-    return this.http.get(this.apiUrl);
+  update(updateDto: UpdateDto): Observable<ResponseDto<ShowDto>> {
+    return this.http.put<ResponseDto<ShowDto>>(this.apiUrl, updateDto);
   }
 
-  listOne(id: number) {
-    return this.http.get(`${this.apiUrl}/${id}`);
+  listOne(id: number): Observable<ResponseDto<ShowDto>> {
+    return this.http.get<ResponseDto<ShowDto>>(`${this.apiUrl}/${id}`);
   }
 
-  update(entity: Entity) {
-    return this.http.put(this.apiUrl, entity);
+  list(request: string): Observable<ResponseDto<ShowDto>> {
+    return request
+      ? this.http.get<ResponseDto<ShowDto>>(`${this.apiUrl}?${request}`)
+      : this.http.get<ResponseDto<ShowDto>>(this.apiUrl);
   }
 
-  delete(id: number) {
-    const deleteObj = { id, activated: false };
-    return this.http.patch(this.apiUrl, deleteObj);
-  }
-
-  page(page: number) {
-    return this.http.get(`${this.apiUrl}?page=${page}`);
+  setActivation(
+    id: number,
+    activation: boolean
+  ): Observable<ResponseDto<ShowDto>> {
+    const deleteObj = { id, activated: activation };
+    return this.http.patch<ResponseDto<ShowDto>>(this.apiUrl, deleteObj);
   }
 }

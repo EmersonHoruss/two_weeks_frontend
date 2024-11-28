@@ -1,16 +1,19 @@
+import { OperationType } from '../../domain/operation/operation';
 import { ProductShowDto } from '../product/product.dto';
 
 export interface OperationCreateDto {
-  type: string;
+  type: OperationType;
   amount: number;
-  date: Date;
+  date: string;
   product: number;
 }
 
+export interface OperationUpdateDto {}
+
 export interface OperationShowDto {
   id: number;
-  type: string;
+  type: OperationType;
   amount: number;
-  date: Date;
+  date: string;
   product: ProductShowDto;
 }

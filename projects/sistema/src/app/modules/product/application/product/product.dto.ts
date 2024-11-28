@@ -7,19 +7,19 @@ export interface ProductCreateDto {
   sellPriceNormal: number;
   sellPriceWholesale1: number;
   sellPriceWholesale2: number;
-  code: string;
+  code?: string;
 }
 
 export interface ProductUpdateDto {
   id: number;
-  type: string;
-  brand: string;
-  size: string;
-  purchasePrice: number;
-  sellPriceNormal: number;
-  sellPriceWholesale1: number;
-  sellPriceWholesale2: number;
-  code: string;
+  type?: string;
+  brand?: string;
+  size?: string;
+  purchasePrice?: number;
+  sellPriceNormal?: number;
+  sellPriceWholesale1?: number;
+  sellPriceWholesale2?: number;
+  code?: string;
 }
 
 export interface ProductActivatedDto {

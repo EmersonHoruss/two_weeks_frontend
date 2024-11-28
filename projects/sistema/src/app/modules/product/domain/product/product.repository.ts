@@ -1,4 +1,9 @@
 import { BaseRepository } from '../../../../shared/domain/base.repository';
-import { Product } from './product';
+import {
+  ProductCreateDto,
+  ProductShowDto,
+  ProductUpdateDto,
+} from '../../application/product/product.dto';
 
-export interface ProductRepository extends BaseRepository<Product> {}
+export interface ProductRepository
+  extends BaseRepository<ProductCreateDto, ProductUpdateDto, ProductShowDto> {}
