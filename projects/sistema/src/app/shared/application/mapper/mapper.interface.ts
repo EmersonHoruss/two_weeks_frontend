@@ -3,5 +3,5 @@ export interface IMapper<Entity, EntityUpdate, CreateDto, UpdateDto, ShowDto> {
 
   toCreateDto(entity: Entity): CreateDto;
   
-  toUpdateDto(entity: EntityUpdate): UpdateDto;
+  toUpdateDto(entity: Entity): UpdateDto;
 }

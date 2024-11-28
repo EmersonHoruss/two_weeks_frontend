@@ -38,7 +38,7 @@ export class BaseApplication<
       );
   }
 
-  update(entity: EntityUpdate): Observable<Response<Entity>> {
+  update(entity: Entity): Observable<Response<Entity>> {
     const updateDto: UpdateDto = this.mapper.toUpdateDto(entity);
     return this.repository
       .update(updateDto)

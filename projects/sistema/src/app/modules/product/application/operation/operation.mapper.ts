@@ -39,7 +39,7 @@ export class OperationMapper
     };
   }
 
-  toUpdateDto(operation: OperationUpdate): OperationUpdateDto {
+  toUpdateDto(operation: Operation): OperationUpdateDto {
     return {};
   }
 }

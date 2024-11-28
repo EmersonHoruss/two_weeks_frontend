@@ -70,7 +70,7 @@ export class ProductMapper
     };
   }
 
-  toUpdateDto(entity: ProductUpdate): ProductUpdateDto {
+  toUpdateDto(entity: Product): ProductUpdateDto {
     const {
       id,
       type,
@@ -81,7 +81,7 @@ export class ProductMapper
       sellPriceWholesale1,
       sellPriceWholesale2,
       code,
-    } = entity;
+    } = entity.properties();
 
     return {
       id,
