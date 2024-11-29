@@ -16,12 +16,12 @@ export enum UserStatus {
 export interface UserRequired {
   email: string;
   password: string;
-  roles: Array<string>;
-  userStatus: UserStatus;
 }
 
 export interface UserOptional {
   id: number;
+  roles: Array<string>;
+  userStatus: UserStatus;
   profile: Profile;
   activated: boolean;
 }

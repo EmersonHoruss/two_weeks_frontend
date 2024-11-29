@@ -1,5 +1,5 @@
 export interface PointOfSaleRequired {
-  date: Date;
+  date: string;
   initialAmount: number;
 }
 
@@ -14,7 +14,7 @@ export type PointOfSaleProperties = Required<PointOfSaleRequired> &
   Partial<PointOfSaleOptional>;
 
 export type PointOfSaleUpdate = Partial<{
-  date: Date;
+  date: string;
   initialAmount: number;
   virtualAmount: number;
   phisicalAmount: number;
@@ -26,7 +26,7 @@ export class PointOfSale {
   private virutalAmount: number;
   private phisicalAmount: number;
   private initialAmount: number;
-  private date: Date;
+  private date: string;
 
   constructor(properties: PointOfSaleProperties) {
     let { virtualAmount, phisicalAmount } = properties;

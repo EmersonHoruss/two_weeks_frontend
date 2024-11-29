@@ -1,4 +1,9 @@
 import { BaseRepository } from '../../../../shared/domain/base.repository';
-import { Profile } from './profile';
+import {
+  ProfileCreateDto,
+  ProfileShowDto,
+  ProfileUpdateDto,
+} from '../../application/profile/profile.dto';
 
-export interface ProfileRepository extends BaseRepository<Profile> {}
+export interface ProfileRepository
+  extends BaseRepository<ProfileCreateDto, ProfileUpdateDto, ProfileShowDto> {}

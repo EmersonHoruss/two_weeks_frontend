@@ -1,4 +1,9 @@
 import { BaseRepository } from '../../../../shared/domain/base.repository';
-import { User } from './user';
+import {
+  UserCreateDto,
+  UserShowDto,
+  UserUpdateDto,
+} from '../../application/user/user.dto';
 
-export interface UserRepository extends BaseRepository<User> {}
+export interface UserRepository
+  extends BaseRepository<UserCreateDto, UserUpdateDto, UserShowDto> {}

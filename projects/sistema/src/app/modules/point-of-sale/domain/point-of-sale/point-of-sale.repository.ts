@@ -1,4 +1,13 @@
 import { BaseRepository } from '../../../../shared/domain/base.repository';
-import { PointOfSale } from './point-of-sale';
+import {
+  PointOfSaleCreateDto,
+  PointOfSaleShowDto,
+  PointOfSaleUpdateDto,
+} from '../../application/point-of-sale/point-of-sale.dto';
 
-export interface PointOfSaleRepository extends BaseRepository<PointOfSale> {}
+export interface PointOfSaleRepository
+  extends BaseRepository<
+    PointOfSaleCreateDto,
+    PointOfSaleUpdateDto,
+    PointOfSaleShowDto
+  > {}

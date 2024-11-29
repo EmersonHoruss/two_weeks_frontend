@@ -1,9 +1,8 @@
-export interface ProfileRequired {
-  userId: number;
-}
+export interface ProfileRequired {}
 
 export interface ProfileOptional {
   id: number;
+  userId: number;
   name: string;
   secondName: string;
   surname: string;
