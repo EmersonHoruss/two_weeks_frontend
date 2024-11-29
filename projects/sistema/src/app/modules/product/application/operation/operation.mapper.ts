@@ -1,5 +1,5 @@
 import { IMapper } from '../../../../shared/application/mapper/mapper.interface';
-import { Operation, OperationUpdate } from '../../domain/operation/operation';
+import { Operation } from '../../domain/operation/operation';
 import { ProductMapper } from '../product/product.mapper';
 import {
   OperationCreateDto,
@@ -11,7 +11,6 @@ export class OperationMapper
   implements
     IMapper<
       Operation,
-      OperationUpdate,
       OperationCreateDto,
       OperationUpdateDto,
       OperationShowDto
@@ -35,7 +34,7 @@ export class OperationMapper
       type,
       amount,
       date,
-      product: productId,
+      productId,
     };
   }
 

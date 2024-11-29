@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { BaseApplication } from '../../../../shared/application/base.application';
-import { Product, ProductUpdate } from '../../domain/product/product';
+import { Product } from '../../domain/product/product';
 import { ProductRepository } from '../../domain/product/product.repository';
 import { ProductInfrastructure } from '../../infrastructure/product/product.infrastructure';
 import { ProductCreateDto, ProductShowDto, ProductUpdateDto } from './product.dto';
@@ -9,7 +9,6 @@ import { ProductMapper } from './product.mapper';
 @Injectable()
 export class ProductApplication extends BaseApplication<
   Product,
-  ProductUpdate,
   ProductCreateDto,
   ProductUpdateDto,
   ProductShowDto,

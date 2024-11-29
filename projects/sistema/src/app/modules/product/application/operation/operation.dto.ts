@@ -5,7 +5,7 @@ export interface OperationCreateDto {
   type: OperationType;
   amount: number;
   date: string;
-  product: number;
+  productId: number;
 }
 
 export interface OperationUpdateDto {}

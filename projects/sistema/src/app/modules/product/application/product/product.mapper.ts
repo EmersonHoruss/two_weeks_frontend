@@ -1,5 +1,5 @@
 import { IMapper } from '../../../../shared/application/mapper/mapper.interface';
-import { Product, ProductUpdate } from '../../domain/product/product';
+import { Product } from '../../domain/product/product';
 import {
   ProductCreateDto,
   ProductShowDto,
@@ -10,7 +10,6 @@ export class ProductMapper
   implements
     IMapper<
       Product,
-      ProductUpdate,
       ProductCreateDto,
       ProductUpdateDto,
       ProductShowDto

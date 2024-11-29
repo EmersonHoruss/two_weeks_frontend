@@ -22,11 +22,6 @@ export interface ProductUpdateDto {
   code?: string;
 }
 
-export interface ProductActivatedDto {
-  id: number;
-  activated: boolean;
-}
-
 export interface ProductShowDto {
   id: number;
   type: string;
@@ -38,6 +33,6 @@ export interface ProductShowDto {
   sellPriceWholesale1: number;
   sellPriceWholesale2: number;
   name: string;
-  code: string;
+  code?: string;
   activated: boolean;
 }

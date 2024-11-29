@@ -18,7 +18,6 @@ import { OperationMapper } from './operation.mapper';
 @Injectable()
 export class OperationApplication extends BaseApplication<
   Operation,
-  OperationUpdate,
   OperationCreateDto,
   OperationUpdateDto,
   OperationShowDto,
