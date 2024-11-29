@@ -1,4 +1,13 @@
 import { BaseRepository } from '../../../../shared/domain/base.repository';
-import { DetailSell } from './detail-sell';
+import {
+  DetailSellCreateDto,
+  DetailSellShowDto,
+  DetailSellUpdateDto,
+} from '../../application/detail-sell/detail-sell.dto';
 
-export interface DetailSellRepository extends BaseRepository<DetailSell> {}
+export interface DetailSellRepository
+  extends BaseRepository<
+    DetailSellCreateDto,
+    DetailSellUpdateDto,
+    DetailSellShowDto
+  > {}

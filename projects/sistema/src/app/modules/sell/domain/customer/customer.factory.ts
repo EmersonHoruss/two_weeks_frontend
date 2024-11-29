@@ -1,31 +1,22 @@
 import { Customer, CustomerProperties } from './customer';
 
 export class CustomerFactory {
-  create({
-    id,
-    secondName,
-    secondSurname,
-    fullName,
-    identity,
-    firstName,
-    surname,
-  }) {
+  create({ id, identityType, identity, name }) {
     const detailSellProperties: CustomerProperties = {
       id,
-      secondName,
-      secondSurname,
-      fullName,
+      identityType,
       identity,
-      firstName,
-      surname,
+      name,
     };
 
+    if (identityType === null || identityType === undefined)
+      throw new Error(
+        'Falta el tipo de identidad (dni o pasaporte) del cliente'
+      );
     if (identity === null || identity === undefined)
-      throw new Error('Falta el dni o pasaporte del cliente');
-    if (firstName === null || firstName === undefined)
+      throw new Error('Falta la identidad del cliente');
+    if (name === null || name === undefined)
       throw new Error('Falta el nombre del cliente');
-    if (surname === null || surname === undefined)
-      throw new Error('Falta el apellido del cliente');
 
     return new Customer(detailSellProperties);
   }
