@@ -8,7 +8,6 @@ import { ResponseDto } from './dtos/response.dto';
 import { RequestFactory } from '../domain/request.factory';
 export class BaseApplication<
   Entity,
-  EntityUpdate,
   CreateDto,
   UpdateDto,
   ShowDto,
@@ -18,7 +17,6 @@ export class BaseApplication<
     private readonly repository: Repository,
     private readonly mapper: IMapper<
       Entity,
-      EntityUpdate,
       CreateDto,
       UpdateDto,
       ShowDto

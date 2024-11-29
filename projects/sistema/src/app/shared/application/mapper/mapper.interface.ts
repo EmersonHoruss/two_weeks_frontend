@@ -1,4 +1,4 @@
-export interface IMapper<Entity, EntityUpdate, CreateDto, UpdateDto, ShowDto> {
+export interface IMapper<Entity, CreateDto, UpdateDto, ShowDto> {
   toEntity(showDto: ShowDto): Entity;
 
   toCreateDto(entity: Entity): CreateDto;
