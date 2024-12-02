@@ -29,6 +29,14 @@ import { ProfileApplication } from './modules/user/application/profile/profile.a
 import { UserApplication } from './modules/user/application/user/user.application';
 import { ProfileInfrastructure } from './modules/user/infrastructure/profile/profile.infrastructure';
 import { UserInfrastructure } from './modules/user/infrastructure/user/user.infrastructure';
+import { ProductMapper } from './modules/product/application/product/product.mapper';
+import { PointOfSaleMapper } from './modules/point-of-sale/application/point-of-sale/point-of-sale.mapper';
+import { OperationMapper } from './modules/product/application/operation/operation.mapper';
+import { CustomerMapper } from './modules/sell/application/customer/customer.mapper';
+import { DetailSellMapper } from './modules/sell/application/detail-sell/detail-sell.mapper';
+import { SellMapper } from './modules/sell/application/sell/sell.mapper';
+import { ProfileMapper } from './modules/user/application/profile/profile.mapper';
+import { UserMapper } from './modules/user/application/user/user.mapper';
 
 const angular = [
   provideZoneChangeDetection({ eventCoalescing: true }),
@@ -70,6 +78,16 @@ const application = [
   ProfileApplication,
   UserApplication,
 ];
+const mappers = [
+  PointOfSaleMapper,
+  OperationMapper,
+  ProductMapper,
+  CustomerMapper,
+  DetailSellMapper,
+  SellMapper,
+  ProfileMapper,
+  UserMapper,
+];
 const interceptors = [
   { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
 ];
@@ -81,6 +99,7 @@ export const appConfig: ApplicationConfig = {
     ...layout,
     ...infraestructure,
     ...application,
+    ...mappers,
     ...interceptors,
   ],
 };

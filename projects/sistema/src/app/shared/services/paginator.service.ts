@@ -3,22 +3,23 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 
 @Injectable()
 export class PaginatorService extends MatPaginatorIntl {
-  override itemsPerPageLabel = 'Items per page';
-  override nextPageLabel = 'next page';
-  override previousPageLabel = 'previous page';
-  override firstPageLabel = 'first page';
-  override lastPageLabel = 'last page';
+  override itemsPerPageLabel = 'Items por página';
+  override nextPageLabel = 'siguiente página';
+  override previousPageLabel = 'anterior página';
+  override firstPageLabel = 'primera página';
+  override lastPageLabel = 'última página';
   override getRangeLabel = (
     page: number,
     pageSize: number,
     length: number
   ): string => {
     if (length === 0 || pageSize === 0) {
-      return `0 of ${length}`;
+      return `0 de ${length}`;
     }
-    length = Math.max(length);
-    const start = page * pageSize;
-    const end = start < length ? Math.min(start, length) : start + pageSize;
-    return `${start + 1} - ${end} of ${length}`;
+
+    const start = page * pageSize + 1;
+    const end = Math.min((page + 1) * pageSize, length);
+
+    return `${start} - ${end} de ${length}`;
   };
 }

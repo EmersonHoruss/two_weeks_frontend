@@ -1,9 +1,11 @@
+import { Injectable } from '@angular/core';
 import { IMapper } from '../../../../shared/application/mapper/mapper.interface';
 import { UserMapper } from '../../../user/application/user/user.mapper';
 import { Sell } from '../../domain/sell/sell';
 import { CustomerMapper } from '../customer/customer.mapper';
 import { SellCreateDto, SellShowDto, SellUpdateDto } from './sell.dto';
 
+@Injectable()
 export class SellMapper
   implements IMapper<Sell, SellCreateDto, SellUpdateDto, SellShowDto>
 {

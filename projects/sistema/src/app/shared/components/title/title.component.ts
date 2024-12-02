@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { Menu, MenuService } from '../../services/menu.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -7,15 +7,16 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './title.component.html',
   styleUrl: './title.component.scss',
   standalone: false,
+  encapsulation: ViewEncapsulation.None
 })
 export class TitleComponent {
-  itemMenu!: Menu;
+  menuItem!: Menu;
 
   constructor(
     private readonly activatedRoute: ActivatedRoute,
     private readonly menuService: MenuService
   ) {
     const currentPath = `/${this.activatedRoute.snapshot.pathFromRoot[1].routeConfig?.path}`;
-    this.itemMenu = menuService.getDataPath(currentPath);
+    this.menuItem = menuService.getDataPath(currentPath);
   }
 }

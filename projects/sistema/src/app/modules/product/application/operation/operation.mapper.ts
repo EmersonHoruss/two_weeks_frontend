@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { IMapper } from '../../../../shared/application/mapper/mapper.interface';
 import { Operation } from '../../domain/operation/operation';
 import { ProductMapper } from '../product/product.mapper';
@@ -7,6 +8,7 @@ import {
   OperationUpdateDto,
 } from './operation.dto';
 
+@Injectable()
 export class OperationMapper
   implements
     IMapper<

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { PageRequestDto } from '../../application/dtos/request.dto';
 
 @Component({
   selector: 'tw-paginator',
@@ -11,9 +12,12 @@ export class PaginatorComponent {
   @Input() length: number = 0;
   @Input() pageSize: number = 0;
   @Input() showFirstLastButtons: boolean = true;
-  @Output() onChangePage: EventEmitter<number> = new EventEmitter();
+  @Output() onChangePage: EventEmitter<PageRequestDto> = new EventEmitter();
 
   changePage(pageEvent: PageEvent) {
-    this.onChangePage.emit(pageEvent.pageIndex);
+    const { pageIndex, pageSize } = pageEvent;
+    const pageRequestDto = { page: pageIndex, size: pageSize };
+    
+    this.onChangePage.emit(pageRequestDto);
   }
 }

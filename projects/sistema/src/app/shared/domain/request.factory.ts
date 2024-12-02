@@ -4,9 +4,10 @@ import { RequestDto, SortRequestDto } from '../application/dtos/request.dto';
 export abstract class RequestFactory {
   public static toString(requestDto: RequestDto): string {
     const { pageIndex, pageSize } = environment;
-    const { page = pageIndex, size = pageSize, sort, query } = requestDto;
+    const { page: pageRequestDto, sort, query } = requestDto;
     let params: string[] = [];
 
+    const { page = pageIndex, size = pageSize } = pageRequestDto;
     params.push(`page=${page}`);
     params.push(`size=${size}`);
 

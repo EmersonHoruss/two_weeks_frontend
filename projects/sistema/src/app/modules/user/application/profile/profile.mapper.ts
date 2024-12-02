@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { IMapper } from '../../../../shared/application/mapper/mapper.interface';
 import { Profile } from '../../domain/profile/profile';
 import {
@@ -6,6 +7,7 @@ import {
   ProfileUpdateDto,
 } from './profile.dto';
 
+@Injectable()
 export class ProfileMapper
   implements
     IMapper<Profile, ProfileCreateDto, ProfileUpdateDto, ProfileShowDto>

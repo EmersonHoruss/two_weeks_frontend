@@ -27,8 +27,8 @@
     </tw-table>
   </div>
   <tw-paginator
-    [length]="quantityRecords"
-    [pageSize]="pageSize"
-    (onChangePage)="getRecordsByPage($event)"
+    [length]="26"
+    [pageSize]="5"
+    (onChangePage)="paginate($event)"
   ></tw-paginator>
 </tw-container>

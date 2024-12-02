@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { IMapper } from '../../../../shared/application/mapper/mapper.interface';
 import { PointOfSale } from '../../domain/point-of-sale/point-of-sale';
 import {
@@ -6,6 +7,7 @@ import {
   PointOfSaleUpdateDto,
 } from './point-of-sale.dto';
 
+@Injectable()
 export class PointOfSaleMapper
   implements
     IMapper<

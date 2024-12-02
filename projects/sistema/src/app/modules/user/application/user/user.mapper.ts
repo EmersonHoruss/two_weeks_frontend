@@ -1,9 +1,11 @@
+import { Injectable } from '@angular/core';
 import { IMapper } from '../../../../shared/application/mapper/mapper.interface';
 import { Profile } from '../../domain/profile/profile';
 import { User } from '../../domain/user/user';
 import { ProfileMapper } from '../profile/profile.mapper';
 import { UserCreateDto, UserShowDto, UserUpdateDto } from './user.dto';
 
+@Injectable()
 export class UserMapper
   implements IMapper<User, UserCreateDto, UserUpdateDto, UserShowDto>
 {

@@ -1,7 +1,15 @@
 <div class="toolbar">
   <div class="info">
-    <mat-icon [svgIcon]="itemMenu.icon"> </mat-icon>
-    <h2>{{ itemMenu.title }}</h2>
+    <div>
+      <div *ngIf="menuItem.foreignToMaterial; else foreignToMaterial">
+        <mat-icon [svgIcon]="menuItem.icon"></mat-icon>
+      </div>
+
+      <ng-template #foreignToMaterial>
+        <mat-icon color="primary">{{ menuItem.icon }}</mat-icon>
+      </ng-template>
+    </div>
+    <h2>{{ menuItem.title }}</h2>
   </div>
 
   <div class="action">

@@ -8,9 +8,13 @@ export interface SortRequestDto {
   direction: Direction;
 }
 
-export interface RequestDto {
+export interface PageRequestDto {
   page: number;
   size: number;
-  sort: Array<SortRequestDto>;
-  query: string;
+}
+
+export interface RequestDto {
+  page?: PageRequestDto
+  sort?: Array<SortRequestDto>;
+  query?: string;
 }
