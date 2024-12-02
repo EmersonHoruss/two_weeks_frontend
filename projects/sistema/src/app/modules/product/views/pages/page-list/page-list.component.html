@@ -27,8 +27,8 @@
     </tw-table>
   </div>
   <tw-paginator
-    [length]="26"
-    [pageSize]="5"
+    [length]="response?.totalElements"
+    [pageSize]="response?.pageSize"
     (onChangePage)="paginate($event)"
   ></tw-paginator>
 </tw-container>

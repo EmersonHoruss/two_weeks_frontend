@@ -10,8 +10,8 @@ export class ResponseMapper<Entity, ShowDto> {
         ? dto.content.map(this.toEntityMapper)
         : this.toEntityMapper(dto.content),
       pageIndex: dto.pageable.page.number,
-      totalPages: dto.pageable.totalPages,
-      totalElements: dto.pageable.page.numberOfElements,
+      pageSize: dto.pageable.page.size,
+      totalElements: dto.pageable.totalElements,
     };
   }
 }
