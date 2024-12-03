@@ -19,23 +19,35 @@ import { environment } from '../../../../../../environments/environment';
 })
 export class PageListComponent {
   metaColumns: Array<MetaColumn> = [
-    { field: '#', title: '#', isVisible: true },
-    { field: 'id', title: 'ID', isVisible: true },
-    { field: 'type', title: 'Tipo', isVisible: true },
-    { field: 'brand', title: 'Marca', isVisible: true },
-    { field: 'size', title: 'Talla', isVisible: true },
-    { field: 'stock', title: 'Stock', isVisible: true },
-    { field: 'purchasePrice', title: 'Precio de compra', isVisible: true },
-    { field: 'sellPriceNormal', title: 'Precio al por menor', isVisible: true },
+    { field: '#', title: '#', isVisible: true, size: '20px' },
+    { field: 'id', title: 'ID', isVisible: true, size: '20px' },
+    { field: 'type', title: 'Tipo', isVisible: true, size: '40px' },
+    { field: 'brand', title: 'Marca', isVisible: true, size: '40px' },
+    { field: 'size', title: 'Talla', isVisible: true, size: '40px' },
+    { field: 'stock', title: 'Stock', isVisible: true, size: '40px' },
+    {
+      field: 'purchasePrice',
+      title: 'Precio de compra',
+      isVisible: true,
+      size: '150px',
+    },
+    {
+      field: 'sellPriceNormal',
+      title: 'Precio al por menor',
+      isVisible: true,
+      size: '160px',
+    },
     {
       field: 'sellPriceWholesale1',
       title: 'Precio al por mayor',
       isVisible: true,
+      size: '180px',
     },
     {
       field: 'sellPriceWholesale2',
       title: 'Precio al super por mayor',
       isVisible: true,
+      size: '200px',
     },
   ];
 
@@ -74,8 +86,7 @@ export class PageListComponent {
           this.loading = false;
         },
       });
-      
-    }, 100000);
+    }, 1000);
   }
 
   paginate($event: PageRequestDto) {

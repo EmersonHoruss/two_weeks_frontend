@@ -6,8 +6,20 @@
       [matColumnDef]="record.field"
       *ngFor="let record of metaColumns"
     >
-      <th mat-header-cell *matHeaderCellDef>{{ record.title }}</th>
-      <td mat-cell *matCellDef="let row">{{ row[record.field] }}</td>
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        [ngStyle]="{ width: record.size, 'min-width': record.size }"
+      >
+        {{ record.title }}
+      </th>
+      <td
+        mat-cell
+        *matCellDef="let row"
+        [ngStyle]="{ width: record.size, 'min-width': record.size }"
+      >
+        {{ row[record.field] }}
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="listFields; sticky: true"></tr>
