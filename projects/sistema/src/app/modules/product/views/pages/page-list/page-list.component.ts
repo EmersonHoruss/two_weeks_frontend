@@ -64,15 +64,18 @@ export class PageListComponent {
   private loadRecords() {
     this.loading = true;
 
-    this.productApplication.list(this.requestDto).subscribe({
-      next: (response: Response<Product>) => {
-        this.response = response;
-      },
-      error: (error: ExceptionDto) => {},
-      complete: () => {
-        this.loading = false;
-      },
-    });
+    setTimeout(() => {
+      this.productApplication.list(this.requestDto).subscribe({
+        next: (response: Response<Product>) => {
+          this.response = response;
+        },
+        error: (error: ExceptionDto) => {},
+        complete: () => {
+          this.loading = false;
+        },
+      });
+      
+    }, 100000);
   }
 
   paginate($event: PageRequestDto) {

@@ -21,6 +21,8 @@ export class TableComponent implements OnInit {
   listFields: string[] = [];
   @Input() metaColumns: MetaColumn[] = [];
   @Input() dataSource: any[] = [];
+  @Input() loading: boolean = false;
+  @Input() NO_RECORDS_MESSAGE = 'No hay registrados';
 
   @ContentChildren(MatColumnDef, { descendants: true })
   columnsDef!: QueryList<MatColumnDef>;

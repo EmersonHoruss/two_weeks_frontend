@@ -13,8 +13,7 @@ body {
   width: 100% !important;
   height: 100% !important;
   overflow-y: auto;
-  border-top-left-radius: var(--mdc-elevated-card-container-shape);
-  border-top-right-radius: var(--mdc-elevated-card-container-shape);
+  border-radius: var(--mdc-elevated-card-container-shape);
 }
 
 .scroll {

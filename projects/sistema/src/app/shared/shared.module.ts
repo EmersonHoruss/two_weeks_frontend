@@ -18,6 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { UtilsService } from './services/utils.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ConfirmComponent } from './components/confirm/confirm.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ConfirmComponent } from './components/confirm/confirm.component';
     MatPaginatorModule,
     MatDialogModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     TitleComponent,
@@ -50,6 +52,7 @@ import { ConfirmComponent } from './components/confirm/confirm.component';
     ReactiveFormsModule,
     MatTableModule,
     ConfirmComponent,
+    MatProgressSpinnerModule,
   ],
   providers: [UtilsService],
 })
