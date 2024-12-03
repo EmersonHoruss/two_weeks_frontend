@@ -95,9 +95,19 @@ export class PageListComponent {
   }
 
   get dataSource(): Array<Product> {
-    const products = this.response?.content;
+    if (!this.response) return [];
 
-    return !Array.isArray(products) || !products ? [] : products;
+    let { content: products, pageIndex, pageSize } = this.response;
+
+    products = !Array.isArray(products) || !products ? [] : products;
+
+    let i = pageIndex * pageSize;
+    products = products.map((product) => {
+      i++;
+      return { ...product, '#': i };
+    });
+
+    return products;
   }
 
   showModalWindow(row?: any) {
