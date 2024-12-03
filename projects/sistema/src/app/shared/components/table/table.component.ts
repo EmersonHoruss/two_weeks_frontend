@@ -33,7 +33,9 @@ export class TableComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['metaColumns']) {
-      this.listFields = this.metaColumns.map((item) => item.field);
+      this.listFields = this.metaColumns
+        .filter((metaColumn) => metaColumn.isVisible)
+        .map((metaColumn) => metaColumn.field);
     }
   }
 

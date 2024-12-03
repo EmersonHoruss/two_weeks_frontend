@@ -20,7 +20,7 @@ import { environment } from '../../../../../../environments/environment';
 export class PageListComponent {
   metaColumns: Array<MetaColumn> = [
     { field: '#', title: '#', isVisible: true, size: '20px' },
-    { field: 'id', title: 'ID', isVisible: true, size: '20px' },
+    { field: 'id', title: 'ID', isVisible: false, size: '20px' },
     { field: 'type', title: 'Tipo', isVisible: true, size: '40px' },
     { field: 'brand', title: 'Marca', isVisible: true, size: '40px' },
     { field: 'size', title: 'Talla', isVisible: true, size: '40px' },
@@ -29,25 +29,25 @@ export class PageListComponent {
       field: 'purchasePrice',
       title: 'Precio de compra',
       isVisible: true,
-      size: '150px',
+      size: '100px',
     },
     {
       field: 'sellPriceNormal',
       title: 'Precio al por menor',
       isVisible: true,
-      size: '160px',
+      size: '100px',
     },
     {
       field: 'sellPriceWholesale1',
       title: 'Precio al por mayor',
       isVisible: true,
-      size: '180px',
+      size: '100px',
     },
     {
       field: 'sellPriceWholesale2',
       title: 'Precio al super por mayor',
       isVisible: true,
-      size: '200px',
+      size: '140px',
     },
   ];
 
