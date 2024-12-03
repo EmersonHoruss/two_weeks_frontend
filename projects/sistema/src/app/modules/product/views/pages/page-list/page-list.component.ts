@@ -102,7 +102,7 @@ export class PageListComponent {
     products = !Array.isArray(products) || !products ? [] : products;
 
     let i = pageIndex * pageSize;
-    products = products.map((product) => {
+    products = products.map((product: Product) => {
       i++;
       return { ...product, '#': i };
     });
