@@ -22,7 +22,7 @@ export class TableComponent implements OnInit {
   @Input() metaColumns: MetaColumn[] = [];
   @Input() dataSource: any[] = [];
   @Input() loading: boolean = false;
-  @Input() NO_RECORDS_MESSAGE = 'No hay registrados';
+  @Input() pluralEntity = 'registros';
 
   @ContentChildren(MatColumnDef, { descendants: true })
   columnsDef!: QueryList<MatColumnDef>;
@@ -49,4 +49,8 @@ export class TableComponent implements OnInit {
   }
 
   selectRow(row: any) {}
+
+  get noDataMessage() {
+    return `No se han encontrado ${this.pluralEntity}`;
+  }
 }

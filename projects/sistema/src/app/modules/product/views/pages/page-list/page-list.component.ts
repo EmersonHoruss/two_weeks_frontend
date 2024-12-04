@@ -75,7 +75,7 @@ export class PageListComponent {
   response: Response<any>;
 
   loading: boolean;
-  NO_RECORDS_MESSAGE = 'No hay productos';
+  pluralEntity = 'productos';
 
   constructor(
     private readonly utilsService: UtilsService,
@@ -106,7 +106,7 @@ export class PageListComponent {
           this.loading = false;
         },
       });
-    }, 1000);
+    }, 10000);
   }
 
   paginate($event: PageRequestDto) {

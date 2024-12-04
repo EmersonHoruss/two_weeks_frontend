@@ -31,4 +31,8 @@
       (click)="selectRow(row)"
     ></tr>
   </table>
+
+  <div *ngIf="dataSource.length === 0 && !loading" class="no-records">
+    {{ noDataMessage }}
+  </div>
 </div>
