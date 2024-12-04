@@ -99,14 +99,14 @@ export class PageListComponent {
     setTimeout(() => {
       this.productApplication.list(this.requestDto).subscribe({
         next: (response: Response<Product>) => {
-          this.response = response;
+          this.response = response;console.log("uwu")
         },
         error: (error: ExceptionDto) => {},
         complete: () => {
           this.loading = false;
         },
       });
-    }, 10000);
+    }, 3000);
   }
 
   paginate($event: PageRequestDto) {
