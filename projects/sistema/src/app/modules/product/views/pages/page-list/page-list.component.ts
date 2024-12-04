@@ -19,12 +19,36 @@ import { environment } from '../../../../../../environments/environment';
 })
 export class PageListComponent {
   metaColumns: Array<MetaColumn> = [
-    { field: '#', title: '#', isVisible: true, size: '20px' },
-    { field: 'id', title: 'ID', isVisible: false, size: '20px' },
-    { field: 'type', title: 'Tipo', isVisible: true, size: '40px' },
-    { field: 'brand', title: 'Marca', isVisible: true, size: '40px' },
-    { field: 'size', title: 'Talla', isVisible: true, size: '40px' },
-    { field: 'stock', title: 'Stock', isVisible: true, size: '40px' },
+    { field: '#', title: '#', isVisible: true, size: '20px', sticky: true },
+    { field: 'id', title: 'ID', isVisible: false, size: '20px', sticky: true },
+    {
+      field: 'type',
+      title: 'Tipo',
+      isVisible: true,
+      size: '40px',
+      sticky: true,
+    },
+    {
+      field: 'brand',
+      title: 'Marca',
+      isVisible: true,
+      size: '40px',
+      sticky: true,
+    },
+    {
+      field: 'size',
+      title: 'Talla',
+      isVisible: true,
+      size: '40px',
+      sticky: true,
+    },
+    {
+      field: 'stock',
+      title: 'Stock',
+      isVisible: true,
+      size: '40px',
+      sticky: true,
+    },
     {
       field: 'purchasePrice',
       title: 'Precio de compra',

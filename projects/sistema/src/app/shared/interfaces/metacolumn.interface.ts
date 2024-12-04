@@ -2,5 +2,6 @@ export interface MetaColumn {
   title: string;
   field: string;
   isVisible: boolean;
-  size?: string
+  size?: string;
+  sticky?: boolean;
 }

@@ -8,7 +8,7 @@
 <tw-container>
   <div class="page-list-content scrollable-container scroll">
     <tw-table [metaColumns]="metaColumns" [dataSource]="dataSource">
-      <ng-container matColumnDef="actions">
+      <ng-container matColumnDef="actions" stickyEnd>
         <th mat-header-cell *matHeaderCellDef>Acciones</th>
         <td mat-cell *matCellDef="let row" class="actions">
           <button

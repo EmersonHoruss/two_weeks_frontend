@@ -5,6 +5,7 @@
     <ng-container
       [matColumnDef]="record.field"
       *ngFor="let record of metaColumns"
+      [sticky]="record.sticky"
     >
       <th
         mat-header-cell
