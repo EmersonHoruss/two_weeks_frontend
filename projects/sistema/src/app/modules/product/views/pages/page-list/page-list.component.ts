@@ -19,55 +19,46 @@ import { environment } from '../../../../../../environments/environment';
 })
 export class PageListComponent {
   metaColumns: Array<MetaColumn> = [
-    { field: '#', title: '#', isVisible: true, size: '20px' },
-    { field: 'id', title: 'ID', isVisible: false, size: '20px' },
+    { field: '#', title: '#', isVisible: true },
     {
-      field: 'type',
+      field: 'typeStr',
       title: 'Tipo',
       isVisible: true,
-      size: '40px',
     },
     {
-      field: 'brand',
+      field: 'brandStr',
       title: 'Marca',
       isVisible: true,
-      size: '40px',
     },
     {
-      field: 'size',
+      field: 'sizeStr',
       title: 'Talla',
       isVisible: true,
-      size: '40px',
     },
     {
       field: 'stock',
       title: 'Stock',
       isVisible: true,
-      size: '40px',
     },
     {
       field: 'purchasePrice',
       title: 'Precio de compra',
       isVisible: true,
-      size: '100px',
     },
     {
       field: 'sellPriceNormal',
       title: 'Precio al por menor',
       isVisible: true,
-      size: '100px',
     },
     {
       field: 'sellPriceWholesale1',
       title: 'Precio al por mayor',
       isVisible: true,
-      size: '100px',
     },
     {
       field: 'sellPriceWholesale2',
       title: 'Precio al super por mayor',
       isVisible: true,
-      size: '140px',
     },
   ];
 
@@ -126,6 +117,7 @@ export class PageListComponent {
 
     let i = pageIndex * pageSize;
     const productsDisplay = products.map((product: Product): ProductDisplay => {
+      i++;
       const productDisplay: ProductDisplay = product.display();
       return { ...productDisplay, '#': i };
     });
