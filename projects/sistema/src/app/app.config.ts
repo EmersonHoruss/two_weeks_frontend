@@ -37,6 +37,15 @@ import { DetailSellMapper } from './modules/sell/application/detail-sell/detail-
 import { SellMapper } from './modules/sell/application/sell/sell.mapper';
 import { ProfileMapper } from './modules/user/application/profile/profile.mapper';
 import { UserMapper } from './modules/user/application/user/user.mapper';
+import { TypeInfrastructure } from './modules/product/infrastructure/type/type.infrastructure';
+import { BrandInfrastructure } from './modules/product/infrastructure/brand/brand.infrastructure';
+import { SizeInfrastructure } from './modules/product/infrastructure/size/size.infrastructure';
+import { TypeApplication } from './modules/product/application/type/type.application';
+import { BrandApplication } from './modules/product/application/brand/brand.application';
+import { SizeApplication } from './modules/product/application/size/size.application';
+import { TypeMapper } from './modules/product/application/type/type.mapper';
+import { BrandMapper } from './modules/product/application/brand/brand.mapper';
+import { SizeMapper } from './modules/product/application/size/size.mapper';
 
 const angular = [
   provideZoneChangeDetection({ eventCoalescing: true }),
@@ -50,6 +59,9 @@ const infraestructure = [
   AuthInfrastructure,
   StorageInfrastructure,
 
+  TypeInfrastructure,
+  BrandInfrastructure,
+  SizeInfrastructure,
   ProductInfrastructure,
   OperationInfrastructure,
 
@@ -66,6 +78,9 @@ const application = [
   AuthApplication,
   StorageApplication,
 
+  TypeApplication,
+  BrandApplication,
+  SizeApplication,
   ProductApplication,
   OperationApplication,
 
@@ -80,11 +95,17 @@ const application = [
 ];
 const mappers = [
   PointOfSaleMapper,
-  OperationMapper,
+
+  TypeMapper,
+  BrandMapper,
+  SizeMapper,
   ProductMapper,
+  OperationMapper,
+
   CustomerMapper,
   DetailSellMapper,
   SellMapper,
+
   ProfileMapper,
   UserMapper,
 ];

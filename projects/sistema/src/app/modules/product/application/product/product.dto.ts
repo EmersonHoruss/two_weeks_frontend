@@ -12,13 +12,13 @@ export interface ProductCreateDto {
 
 export interface ProductUpdateDto {
   id: number;
-  type?: string;
-  brand?: string;
-  size?: string;
-  purchasePrice?: number;
-  sellPriceNormal?: number;
-  sellPriceWholesale1?: number;
-  sellPriceWholesale2?: number;
+  type: string;
+  brand: string;
+  size: string;
+  purchasePrice: number;
+  sellPriceNormal: number;
+  sellPriceWholesale1: number;
+  sellPriceWholesale2: number;
   code?: string;
 }
 

@@ -46,10 +46,10 @@ export class Product {
   private activated: boolean;
 
   constructor(properties: ProductProperties) {
-    Object.assign(this, properties);
-
     this.activated = true;
     this.name = `${properties.type} ${properties.brand} ${properties.size}`;
+
+    Object.assign(this, properties);
   }
 
   properties(): ProductProperties {
@@ -71,22 +71,6 @@ export class Product {
 
   update(fields: ProductUpdate) {
     Object.assign(this, fields);
-
-    let { type, brand, size } = fields;
-    if (
-      type !== null ||
-      type !== undefined ||
-      brand !== null ||
-      brand !== undefined ||
-      size !== null ||
-      size !== undefined
-    ) {
-      type = type === null || type === undefined ? this.type : type;
-      brand = brand === null || brand === undefined ? this.brand : brand;
-      size = size === null || size === undefined ? this.size : size;
-
-      this.name = `${type} ${brand} ${size}`;
-    }
   }
 
   delete() {
