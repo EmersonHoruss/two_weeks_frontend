@@ -6,94 +6,101 @@ import {
   ProductShowDto,
   ProductUpdateDto,
 } from './product.dto';
+import { TypeMapper } from '../type/type.mapper';
+import { BrandMapper } from '../brand/brand.mapper';
+import { SizeMapper } from '../size/size.mapper';
 
 @Injectable()
 export class ProductMapper
   implements
-    IMapper<
-      Product,
-      ProductCreateDto,
-      ProductUpdateDto,
-      ProductShowDto
-    >
+    IMapper<Product, ProductCreateDto, ProductUpdateDto, ProductShowDto>
 {
   toEntity(showDto: ProductShowDto): Product {
     const {
       id,
-      type,
-      brand,
-      size,
       stock,
       purchasePrice,
       sellPriceNormal,
       sellPriceWholesale1,
       sellPriceWholesale2,
       code,
+      type: typeShowDto,
+      brand: brandShowDto,
+      size: sizeShowDto,
     } = showDto;
+    const type = new TypeMapper().toEntity(typeShowDto);
+    const brand = new BrandMapper().toEntity(brandShowDto);
+    const size = new SizeMapper().toEntity(sizeShowDto);
 
     return new Product({
       id,
-      type,
-      brand,
-      size,
       stock,
       purchasePrice,
       sellPriceNormal,
       sellPriceWholesale1,
       sellPriceWholesale2,
       code,
+      type,
+      brand,
+      size,
     });
   }
 
   toCreateDto(entity: Product): ProductCreateDto {
     const {
-      type,
-      brand,
-      size,
       stock,
       purchasePrice,
       sellPriceNormal,
       sellPriceWholesale1,
       sellPriceWholesale2,
       code,
+      type,
+      brand,
+      size,
     } = entity.properties();
+    const typeId = type.properties().id;
+    const brandId = brand.properties().id;
+    const sizeId = size.properties().id;
 
     return {
-      type,
-      brand,
-      size,
       stock,
       purchasePrice,
       sellPriceNormal,
       sellPriceWholesale1,
       sellPriceWholesale2,
       code,
+      typeId,
+      brandId,
+      sizeId,
     };
   }
 
   toUpdateDto(entity: Product): ProductUpdateDto {
     const {
       id,
-      type,
-      brand,
-      size,
       purchasePrice,
       sellPriceNormal,
       sellPriceWholesale1,
       sellPriceWholesale2,
       code,
+      type,
+      brand,
+      size,
     } = entity.properties();
+    const typeId = type.properties().id;
+    const brandId = brand.properties().id;
+    const sizeId = size.properties().id;
 
     return {
       id,
-      type,
-      brand,
-      size,
       purchasePrice,
       sellPriceNormal,
       sellPriceWholesale1,
       sellPriceWholesale2,
       code,
+      typeId,
+      brandId,
+      sizeId,
     };
   }
 }
