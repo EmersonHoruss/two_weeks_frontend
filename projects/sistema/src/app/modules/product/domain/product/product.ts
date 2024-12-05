@@ -1,6 +1,6 @@
-import { Brand } from "../brand/brand";
-import { Size } from "../size/size";
-import { Type } from "../type/type";
+import { Brand } from '../brand/brand';
+import { Size } from '../size/size';
+import { Type } from '../type/type';
 
 export interface ProductRequired {
   stock: number;
@@ -34,6 +34,13 @@ export type ProductUpdate = Partial<{
   brand: Brand;
   size: Size;
 }>;
+
+export type ProductDisplay = ProductProperties & {
+  '#': number;
+  typeStr: string;
+  brandStr: string;
+  sizeStr: string;
+};
 
 export class Product {
   private readonly id: number;
@@ -77,5 +84,25 @@ export class Product {
 
   delete() {
     this.activated = false;
+  }
+
+  display(): ProductDisplay {
+    const { name: typeName, activated: typeActivated } = this.type.properties();
+    const typeStr: string = typeActivated ? typeName : null;
+
+    const { name: brandName, activated: brandActivated } =
+      this.brand.properties();
+    const brandStr: string = brandActivated ? brandName : null;
+
+    const { name: sizeName, activated: sizeActivated } = this.size.properties();
+    const sizeStr: string = sizeActivated ? sizeName : null;
+
+    return {
+      ...this.properties(),
+      '#': null,
+      typeStr,
+      brandStr,
+      sizeStr,
+    };
   }
 }

@@ -7,7 +7,7 @@ import {
   RequestDto,
 } from '../../../../../shared/application/dtos/request.dto';
 import { ExceptionDto } from '../../../../../shared/application/dtos/exception.dto';
-import { Product } from '../../../domain/product/product';
+import { Product, ProductDisplay } from '../../../domain/product/product';
 import { Response } from '../../../../../shared/domain/response';
 import { environment } from '../../../../../../environments/environment';
 
@@ -72,7 +72,7 @@ export class PageListComponent {
   ];
 
   requestDto: RequestDto;
-  response: Response<any>;
+  response: Response<Product>;
 
   loading: boolean;
   pluralEntity = 'productos';
@@ -99,14 +99,17 @@ export class PageListComponent {
     setTimeout(() => {
       this.productApplication.list(this.requestDto).subscribe({
         next: (response: Response<Product>) => {
-          this.response = response;console.log("uwu")
+          this.response = response;
+          console.log('uwu');
         },
-        error: (error: ExceptionDto) => {},
+        error: (error: ExceptionDto) => {
+          this.loading = false;
+        },
         complete: () => {
           this.loading = false;
         },
       });
-    }, 3000);
+    }, 1000);
   }
 
   paginate($event: PageRequestDto) {
@@ -114,7 +117,7 @@ export class PageListComponent {
     this.loadRecords();
   }
 
-  get dataSource(): Array<Product> {
+  get dataSource(): Array<ProductDisplay> {
     if (!this.response) return [];
 
     let { content: products, pageIndex, pageSize } = this.response;
@@ -122,12 +125,12 @@ export class PageListComponent {
     products = !Array.isArray(products) || !products ? [] : products;
 
     let i = pageIndex * pageSize;
-    products = products.map((product: Product) => {
-      i++;
-      return { ...product, '#': i };
+    const productsDisplay = products.map((product: Product): ProductDisplay => {
+      const productDisplay: ProductDisplay = product.display();
+      return { ...productDisplay, '#': i };
     });
 
-    return products;
+    return productsDisplay;
   }
 
   showModalWindow(row?: any) {
