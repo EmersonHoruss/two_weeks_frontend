@@ -18,7 +18,7 @@
           *matCellDef="let row"
           [ngStyle]="{ width: record.size, 'min-width': record.size }"
         >
-          {{ row[record.field] }}
+          {{ row[record.field] | dashNull }}
         </td>
       </ng-container>
 

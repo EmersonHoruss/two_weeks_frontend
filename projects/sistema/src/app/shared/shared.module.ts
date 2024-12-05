@@ -19,6 +19,7 @@ import { UtilsService } from './services/utils.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { DashNullPipe } from './pipes/dash-null/dash-null.pipe';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     TableComponent,
     PaginatorComponent,
     ConfirmComponent,
+    DashNullPipe,
   ],
   imports: [
     CommonModule,
@@ -53,6 +55,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatTableModule,
     ConfirmComponent,
     MatProgressSpinnerModule,
+    DashNullPipe,
   ],
   providers: [UtilsService],
 })
