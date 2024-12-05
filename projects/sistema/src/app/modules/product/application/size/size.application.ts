@@ -15,7 +15,8 @@ export class SizeApplication extends BaseApplication<
   SizeRepository
 > {
   constructor(
-    @Inject(SizeInfrastructure) private readonly sizeRepository: SizeRepository,
+    @Inject(SizeInfrastructure) 
+    private readonly sizeRepository: SizeRepository,
     private readonly sizeMapper: SizeMapper
   ) {
     super(sizeRepository, sizeMapper);

@@ -15,7 +15,8 @@ export class TypeApplication extends BaseApplication<
   TypeRepository
 > {
   constructor(
-    @Inject(TypeInfrastructure) private readonly typeRepository: TypeRepository,
+    @Inject(TypeInfrastructure) 
+    private readonly typeRepository: TypeRepository,
     private readonly typeMapper: TypeMapper
   ) {
     super(typeRepository, typeMapper);
