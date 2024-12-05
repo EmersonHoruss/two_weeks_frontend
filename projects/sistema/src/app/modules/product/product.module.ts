@@ -6,8 +6,11 @@ import { SharedModule } from '../../shared/shared.module';
 import { FormComponent } from './views/components/form/form.component';
 import { PageListComponent } from './views/pages/page-list/page-list.component';
 import { ProductInfrastructure } from './infrastructure/product/product.infrastructure';
+import { FiltersComponent } from './views/components/filters/filters.component';
 
-const declarations = [FormComponent, PageListComponent];
+const components = [FormComponent, FiltersComponent];
+const pages = [PageListComponent];
+const declarations = [...components, ...pages];
 const imports = [CommonModule, ProductRoutingModule, SharedModule];
 const providers = [ProductInfrastructure];
 
