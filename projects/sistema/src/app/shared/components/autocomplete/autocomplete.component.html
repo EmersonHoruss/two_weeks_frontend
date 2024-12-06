@@ -1,0 +1,43 @@
+<form [formGroup]="form">
+  <mat-form-field
+    class="example-full-width"
+    appearance="outline"
+    [ngStyle]="formFieldStyles"
+  >
+    <mat-label>{{ label }}</mat-label>
+
+    <input
+      matInput
+      formControlName="autocompleteControl"
+      [placeholder]="placeholder"
+      [matAutocomplete]="auto"
+    />
+
+    <mat-icon *ngIf="loading" matSuffix>
+      <mat-spinner diameter="20"></mat-spinner>
+    </mat-icon>
+
+    <button
+      *ngIf="cleareable"
+      matSuffix
+      mat-icon-button
+      aria-label="clear"
+      (click)="clearInput()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option
+        *ngFor="let option of filteredOptions | async"
+        [value]="option"
+      >
+        {{ option }}
+      </mat-option>
+    </mat-autocomplete>
+
+    <mat-error *ngIf="!isValidOption()">
+      {{ errorMessage }}
+    </mat-error>
+  </mat-form-field>
+</form>
