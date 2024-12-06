@@ -73,7 +73,7 @@ export class PageListComponent {
     private readonly productApplication: ProductApplication
   ) {
     this.initializeRequestDto();
-    this.loadRecords();
+    this.loadData();
   }
 
   initializeRequestDto() {
@@ -84,14 +84,13 @@ export class PageListComponent {
     };
   }
 
-  private loadRecords() {
+  private loadData() {
     this.loading = true;
 
     setTimeout(() => {
       this.productApplication.list(this.requestDto).subscribe({
         next: (response: Response<Product>) => {
           this.response = response;
-          console.log('uwu');
         },
         error: (error: ExceptionDto) => {
           this.loading = false;
@@ -104,8 +103,17 @@ export class PageListComponent {
   }
 
   paginate($event: PageRequestDto) {
+    if (this.requestDto.page === $event) return;
+
     this.requestDto.page = $event;
-    this.loadRecords();
+    this.loadData();
+  }
+
+  filter($event: string) {
+    if (this.requestDto.query === $event) return;
+
+    this.requestDto.query = $event;
+    this.loadData();
   }
 
   get dataSource(): Array<ProductDisplay> {

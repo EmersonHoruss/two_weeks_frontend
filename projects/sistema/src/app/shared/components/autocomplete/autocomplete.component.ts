@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Observable, startWith, map, catchError, of } from 'rxjs';
 
@@ -9,7 +16,7 @@ import { Observable, startWith, map, catchError, of } from 'rxjs';
   templateUrl: './autocomplete.component.html',
   styleUrl: './autocomplete.component.scss',
 })
-export class AutocompleteComponent {
+export class AutocompleteComponent implements OnChanges {
   @Input() options: string[] = ['Prueba 1', 'Prueba 2'];
   @Input() label: string = 'Entidades';
   @Input() placeholder: string = 'Buscar';
@@ -36,21 +43,30 @@ export class AutocompleteComponent {
   }
 
   ngOnInit() {
-    this.filteredOptions = this.form.get(this.controlName)!.valueChanges.pipe(
-      startWith(''),
-      map((value) => this._filter(value)),
-      catchError(() => of([]))
-    );
+    this.setupFilteredOptions();
 
     this.form
       .get(this.controlName)!
       .valueChanges.subscribe((value: string | number) => {
-        console.log(value);
         this.onChangeAutocomplete.emit(value);
         this.onErrorDetected.emit(!this.isValidOption());
 
         this.handleManualErrorState();
       });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['options']) {
+      this.setupFilteredOptions();
+    }
+  }
+
+  private setupFilteredOptions() {
+    this.filteredOptions = this.form.get(this.controlName)!.valueChanges.pipe(
+      startWith(''),
+      map((value) => this._filter(value)),
+      catchError(() => of([]))
+    );
   }
 
   private _filter(value: string | number): string[] {
