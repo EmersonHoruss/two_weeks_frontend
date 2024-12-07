@@ -37,15 +37,16 @@ import { DetailSellMapper } from './modules/sell/application/detail-sell/detail-
 import { SellMapper } from './modules/sell/application/sell/sell.mapper';
 import { ProfileMapper } from './modules/user/application/profile/profile.mapper';
 import { UserMapper } from './modules/user/application/user/user.mapper';
-import { TypeInfrastructure } from './modules/product/infrastructure/type/type.infrastructure';
-import { BrandInfrastructure } from './modules/product/infrastructure/brand/brand.infrastructure';
-import { SizeInfrastructure } from './modules/product/infrastructure/size/size.infrastructure';
-import { TypeApplication } from './modules/product/application/type/type.application';
-import { BrandApplication } from './modules/product/application/brand/brand.application';
-import { SizeApplication } from './modules/product/application/size/size.application';
-import { TypeMapper } from './modules/product/application/type/type.mapper';
-import { BrandMapper } from './modules/product/application/brand/brand.mapper';
-import { SizeMapper } from './modules/product/application/size/size.mapper';
+import { BrandApplication } from './modules/brand/application/brand/brand.application';
+import { BrandMapper } from './modules/brand/application/brand/brand.mapper';
+import { BrandInfrastructure } from './modules/brand/infrastructure/brand/brand.infrastructure';
+import { SizeApplication } from './modules/size/application/size/size.application';
+import { SizeMapper } from './modules/size/application/size/size.mapper';
+import { SizeInfrastructure } from './modules/size/infrastructure/size/size.infrastructure';
+import { TypeApplication } from './modules/type/application/type/type.application';
+import { TypeMapper } from './modules/type/application/type/type.mapper';
+import { TypeInfrastructure } from './modules/type/infrastructure/type/type.infrastructure';
+
 
 const angular = [
   provideZoneChangeDetection({ eventCoalescing: true }),

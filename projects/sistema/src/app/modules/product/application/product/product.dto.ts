@@ -1,6 +1,7 @@
-import { BrandShowDto } from '../brand/brand.dto';
-import { SizeShowDto } from '../size/size.dto';
-import { TypeShowDto } from '../type/type.dto';
+import { BrandShowDto } from "../../../brand/application/brand/brand.dto";
+import { SizeShowDto } from "../../../size/application/size/size.dto";
+import { TypeShowDto } from "../../../type/application/type/type.dto";
+
 
 export interface ProductCreateDto {
   stock: number;

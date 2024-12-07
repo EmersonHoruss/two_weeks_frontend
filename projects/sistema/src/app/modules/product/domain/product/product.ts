@@ -1,6 +1,6 @@
-import { Brand } from '../brand/brand';
-import { Size } from '../size/size';
-import { Type } from '../type/type';
+import { Brand } from "../../../brand/domain/brand/brand";
+import { Size } from "../../../size/domain/size/size";
+import { Type } from "../../../type/domain/type/type";
 
 export interface ProductRequired {
   stock: number;

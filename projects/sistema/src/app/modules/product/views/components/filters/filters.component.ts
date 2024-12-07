@@ -1,12 +1,11 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { TypeApplication } from '../../../application/type/type.application';
-import { BrandApplication } from '../../../application/brand/brand.application';
-import { SizeApplication } from '../../../application/size/size.application';
-import { Type } from '../../../domain/type/type';
 import { Response } from '../../../../../shared/domain/response';
-import { Brand } from '../../../domain/brand/brand';
-import { Size } from '../../../domain/size/size';
+import { BrandApplication } from '../../../../brand/application/brand/brand.application';
+import { Brand } from '../../../../brand/domain/brand/brand';
+import { SizeApplication } from '../../../../size/application/size/size.application';
+import { Size } from '../../../../size/domain/size/size';
+import { Type } from '../../../../type/domain/type/type';
+import { TypeApplication } from '../../../../type/application/type/type.application';
 
 @Component({
   selector: 'tw-filters',

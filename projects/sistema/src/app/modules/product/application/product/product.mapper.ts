@@ -6,9 +6,10 @@ import {
   ProductShowDto,
   ProductUpdateDto,
 } from './product.dto';
-import { TypeMapper } from '../type/type.mapper';
-import { BrandMapper } from '../brand/brand.mapper';
-import { SizeMapper } from '../size/size.mapper';
+import { BrandMapper } from '../../../brand/application/brand/brand.mapper';
+import { SizeMapper } from '../../../size/application/size/size.mapper';
+import { TypeMapper } from '../../../type/application/type/type.mapper';
+
 
 @Injectable()
 export class ProductMapper
