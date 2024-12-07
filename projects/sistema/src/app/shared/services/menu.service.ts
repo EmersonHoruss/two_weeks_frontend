@@ -28,6 +28,24 @@ export class MenuService {
         foreignToMaterial: false,
       },
       {
+        title: 'Tipos',
+        url: '/tipos',
+        icon: 'category',
+        foreignToMaterial: false,
+      },
+      {
+        title: 'Marcas',
+        url: '/marcas',
+        icon: 'verified',
+        foreignToMaterial: false,
+      },
+      {
+        title: 'Tallas',
+        url: '/tallas',
+        icon: 'straighten',
+        foreignToMaterial: false,
+      },
+      {
         title: 'Vender',
         url: '/ventas/vender',
         icon: 'shopping_cart',
