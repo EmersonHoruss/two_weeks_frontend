@@ -1,6 +1,18 @@
-<tw-title>
+<tw-title [hardDeletionEnabled]="true">
   <button mat-flat-button color="primary" btnAction (click)="showModalWindow()">
     <mat-icon>add</mat-icon>
     Agregar
   </button>
 </tw-title>
+
+<tw-container>
+  <tw-filters (onChangeFilter)="filter($event)"></tw-filters>
+
+  <div class="page-list-content scrollable-container scroll"></div>
+
+  <tw-paginator
+    [length]="response?.totalElements"
+    [pageSize]="response?.pageSize"
+    (onChangePage)="paginate($event)"
+  />
+</tw-container>
