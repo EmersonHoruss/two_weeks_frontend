@@ -13,7 +13,7 @@
   align-items: center;
 }
 
-.toolbar .info mat-icon {
+.toolbar .info .info-icon {
   font-size: 34px;
   height: 34px;
   width: 34px;
@@ -26,8 +26,12 @@
   line-height: 80px;
 }
 
-.icon {
+.icon-container {
   display: flex;
   align-items: center;
   margin-right: 0.5rem;
+}
+
+.folder-delete {
+  margin-left: 0.5rem;
 }
