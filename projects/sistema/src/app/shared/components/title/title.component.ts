@@ -17,6 +17,7 @@ export class TitleComponent {
 
   hasRouteDeletion: boolean = false;
   private readonly ELIMINADOS = '/eliminados';
+  private readonly ELIMINADAS = '/eliminadas';
 
   constructor(
     private readonly activatedRoute: ActivatedRoute,
@@ -24,7 +25,9 @@ export class TitleComponent {
     private readonly router: Router
   ) {
     const fullPathStr = this.router.url;
-    this.hasRouteDeletion = fullPathStr.includes(this.ELIMINADOS);
+    this.hasRouteDeletion =
+      fullPathStr.includes(this.ELIMINADOS) ||
+      fullPathStr.includes(this.ELIMINADAS);
     let currentPath = '';
 
     if (this.inDeletionPage) {
@@ -40,7 +43,7 @@ export class TitleComponent {
 
     let url = this.menuItem.url;
     if (!this.inDeletionPage) {
-      url += this.ELIMINADOS;
+      url += this.isMasculine ? this.ELIMINADOS : this.ELIMINADAS;
     }
 
     this.router.navigate([url]);
