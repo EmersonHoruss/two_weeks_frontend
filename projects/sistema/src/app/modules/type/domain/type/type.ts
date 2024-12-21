@@ -11,6 +11,10 @@ export type TypeProperties = Required<TypeRequired> & Partial<TypeOptional>;
 
 export type TypeUpdate = Partial<{ id: number; name: string }>;
 
+export type TypeDisplay = TypeProperties & {
+  '#': number;
+};
+
 export class Type {
   private readonly id: number;
   private name: string;
@@ -34,5 +38,12 @@ export class Type {
 
   delete() {
     this.activated = false;
+  }
+
+  display(): TypeDisplay {
+    return {
+      ...this.properties(),
+      '#': null,
+    };
   }
 }
