@@ -95,15 +95,15 @@ export class AutocompleteComponent implements OnChanges {
   clearInput(): void {
     const control = this.form.get(this.controlName);
 
-    if (this.loading || !control!.value) return;
+    if (this.loading || !control.value) return;
 
-    control!.setValue('');
-    control!.setErrors(null);
+    control.setValue('');
+    control.setErrors(null);
   }
 
-  get cleareable() {
+  get clearable() {
     const control = this.form.get(this.controlName);
 
-    return !this.loading && control!.value;
+    return !this.loading && control.value;
   }
 }
