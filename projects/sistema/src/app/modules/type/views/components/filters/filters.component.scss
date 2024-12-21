@@ -1,0 +1,15 @@
+.filters-wrapper {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0.5rem;
+}
+
+.search {
+  margin-bottom: 20px;
+}
+
+tw-autocomplete {
+  flex-grow: 1;
+}
