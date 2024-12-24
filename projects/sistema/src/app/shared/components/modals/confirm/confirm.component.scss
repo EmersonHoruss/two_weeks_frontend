@@ -1,12 +1,23 @@
-mat-dialog-content {
+.confirm-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  padding: 1rem;
 }
 
-.buttons {
+.confirm-icon {
+  margin-bottom: 0.5rem;
+  width: 3rem;
+  height: 3rem;
+  font-size: 3rem;
+}
+
+.confirm-message {
+  margin-bottom: 1.8rem;
+}
+
+.confirm-buttons {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
 }

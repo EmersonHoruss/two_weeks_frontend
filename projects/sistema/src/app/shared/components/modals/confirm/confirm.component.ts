@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Inject, Output } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'tw-confirm',
@@ -7,5 +8,16 @@ import { Component } from '@angular/core';
   standalone: false,
 })
 export class ConfirmComponent {
-  messageToConfirm = 'Are you sure?';
+  constructor(
+    public dialogRef: MatDialogRef<ConfirmComponent>,
+    @Inject(MAT_DIALOG_DATA) public message: string
+  ) {}
+
+  onAccept(): void {
+    this.dialogRef.close(true);
+  }
+
+  onCancel(): void {
+    this.dialogRef.close(false);
+  }
 }

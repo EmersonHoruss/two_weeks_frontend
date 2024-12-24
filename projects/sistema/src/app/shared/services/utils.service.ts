@@ -43,15 +43,12 @@ export class UtilsService {
     return this.dialog.open(classComponent, options);
   }
 
-  showConfirm(message: string = this.DEFAULT_CONFIRM_MESSAGE): Observable<any> {
+  showConfirm(message: string = this.DEFAULT_CONFIRM_MESSAGE): Observable<boolean> {
     const reference = this.dialog.open(ConfirmComponent, {
       width: this.DEFAULT_SIZE,
       disableClose: true,
+      data: message
     });
-
-    if (message) {
-      reference.componentInstance.messageToConfirm = message;
-    }
 
     return reference.afterClosed();
   }

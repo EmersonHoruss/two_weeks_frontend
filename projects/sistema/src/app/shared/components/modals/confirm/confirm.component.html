@@ -1,14 +1,12 @@
-<mat-dialog-content>
-  <h3>{{ messageToConfirm }}</h3>
-  <div class="buttons">
-    <button
-      type="button"
-      mat-flat-button
-      color="primary"
-      mat-dialog-close="yes"
-    >
-      Yes
+<div class="confirm-container">
+  <mat-icon class="informative-icon" color="warn" fontIcon> warning </mat-icon>
+
+  <p class="confirm-message">{{ message }}</p>
+
+  <div class="confirm-buttons">
+    <button mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="onAccept()">
+      Accept
     </button>
-    <button type="button" mat-button color="accent" mat-dialog-close>No</button>
   </div>
-</mat-dialog-content>
+</div>
