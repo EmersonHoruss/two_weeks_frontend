@@ -25,6 +25,8 @@ import { AutocompleteComponent } from './components/autocomplete/autocomplete.co
 import { UtilsService } from './services/utils.service';
 
 import { DashNullPipe } from './pipes/dash-null/dash-null.pipe';
+import { LoadingComponent } from './components/loading/loading.component';
+import { InformativeComponent } from './components/informative/informative.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { DashNullPipe } from './pipes/dash-null/dash-null.pipe';
     ConfirmComponent,
     DashNullPipe,
     AutocompleteComponent,
+    LoadingComponent,
+    InformativeComponent,
   ],
   imports: [
     CommonModule,
