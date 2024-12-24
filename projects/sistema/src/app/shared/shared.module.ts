@@ -19,14 +19,14 @@ import { TitleComponent } from './components/title/title.component';
 import { ContainerComponent } from './components/container/container.component';
 import { TableComponent } from './components/table/table.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
-import { ConfirmComponent } from './components/dialogs/confirm/confirm.component';
+import { ConfirmComponent } from './components/modals/confirm/confirm.component';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
 
 import { UtilsService } from './services/utils.service';
 
 import { DashNullPipe } from './pipes/dash-null/dash-null.pipe';
-import { LoadingComponent } from './components/dialogs/loading/loading.component';
-import { InformativeComponent } from './components/dialogs/informative/informative.component';
+import { LoadingComponent } from './components/modals/loading/loading.component';
+import { InformativeComponent } from './components/modals/informative/informative.component';
 
 @NgModule({
   declarations: [
