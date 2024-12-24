@@ -1,0 +1,7 @@
+<div class="informative-container">
+  <mat-icon class="informative-icon" [color]="colorMap[data.state]" fontIcon>
+    {{ iconMap[data.state] }}
+  </mat-icon>
+  <p class="informative-message">{{ data.message }}</p>
+  <button mat-raised-button color="primary" (click)="closeDialog()">OK</button>
+</div>
