@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ConfirmComponent } from '../components/confirm/confirm.component';
+import { ConfirmComponent } from '../components/dialogs/confirm/confirm.component';
 import { Observable } from 'rxjs';
-import { LoadingComponent } from '../components/loading/loading.component';
+import { LoadingComponent } from '../components/dialogs/loading/loading.component';
 import {
   Informative,
   InformativeComponent,
-} from '../components/informative/informative.component';
+} from '../components/dialogs/informative/informative.component';
 
 export enum OperationType {
   Creation = 'Creation',
