@@ -1,1 +1,33 @@
-<p>form works!</p>
+<div class="modal-form-wrapper">
+  <mat-toolbar>
+    <h3>{{ title }}</h3>
+  </mat-toolbar>
+
+  <mat-dialog-content>
+    <form [formGroup]="form">
+      <mat-form-field appearance="outline" class="input">
+        <mat-label>Nombre</mat-label>
+        <input type="text" matInput placeholder="Polo" formControlName="name" />
+        <mat-error *ngIf="nameError">
+          {{ nameError }}
+        </mat-error>
+        <mat-icon *ngIf="nameBeingValidatedAsync" matSuffix>
+          <mat-spinner diameter="20"></mat-spinner>
+        </mat-icon>
+      </mat-form-field>
+
+      <div class="buttons">
+        <button
+          type="button"
+          mat-flat-button
+          color="primary"
+          (click)="save()"
+          [disabled]="form.invalid"
+        >
+          Guardar
+        </button>
+        <button type="button" mat-button (click)="close()">Cerrar</button>
+      </div>
+    </form>
+  </mat-dialog-content>
+</div>
