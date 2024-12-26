@@ -40,3 +40,23 @@ body {
   background-color: gray;
   border-radius: 10px;
 }
+
+.modal-form-wrapper mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #6b6b6b2b;
+}
+
+.modal-form-wrapper form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.modal-form-wrapper .buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
