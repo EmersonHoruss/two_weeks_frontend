@@ -24,4 +24,10 @@
       </ng-container>
     </tw-table>
   </div>
+
+  <tw-paginator
+    [length]="response?.totalElements"
+    [pageSize]="response?.pageSize"
+    (onChangePage)="paginate($event)"
+  />
 </tw-container>
