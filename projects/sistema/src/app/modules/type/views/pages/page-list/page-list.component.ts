@@ -6,10 +6,17 @@ import {
 } from '../../../../../shared/application/dtos/request.dto';
 import { Response } from '../../../../../shared/domain/response';
 import { Type, TypeDisplay } from '../../../domain/type/type';
-import { UtilsService } from '../../../../../shared/services/utils.service';
+import {
+  OperationState,
+  OperationType,
+  UtilsService,
+} from '../../../../../shared/services/utils.service';
 import { TypeApplication } from '../../../application/type/type.application';
 import { environment } from '../../../../../../environments/environment';
 import { ExceptionDto } from '../../../../../shared/application/dtos/exception.dto';
+import { FormComponent } from '../../components/form/form.component';
+import { MatDialogRef } from '@angular/material/dialog';
+import { LoadingComponent } from '../../../../../shared/components/modals/loading/loading.component';
 
 @Component({
   selector: 'tw-page-list',
@@ -84,9 +91,65 @@ export class PageListComponent {
     this.loadData();
   }
 
-  showModalWindow(row?: any) {
-    console.log('row', row);
-    console.log(this.response);
+  createOrUpdate(row?: any) {
+    const isCreate = !row;
+    const modalFormRef: MatDialogRef<FormComponent> =
+      this.utilsService.showModalWindow(FormComponent, {
+        disableClose: true,
+        data: row,
+      });
+
+    modalFormRef.componentInstance.getForm
+      .asObservable()
+      .subscribe((formValue) => {
+        if (!formValue) {
+          modalFormRef.close();
+          return;
+        }
+
+        isCreate
+          ? this.handleCreate(formValue, modalFormRef)
+          : this.handleUpdate(formValue, modalFormRef);
+      });
+  }
+
+  private handleCreate(
+    formValue: any,
+    modalFormRef: MatDialogRef<FormComponent>
+  ) {
+    const loadingRef: MatDialogRef<LoadingComponent> =
+      this.utilsService.showLoading();
+
+    const type = new Type({ name: formValue.name });
+
+    this.typeApplication.create(type).subscribe({
+      next: (result) => {
+        modalFormRef.close();
+        loadingRef.close();
+        this.utilsService.showInformative(
+          OperationType.Creation,
+          OperationState.Success
+        );
+        this.loadData();
+      },
+      error: (error) => {
+        loadingRef.close();
+        this.utilsService.showInformative(
+          OperationType.Creation,
+          OperationState.Error
+        );
+      },
+    });
+  }
+
+  private handleUpdate(
+    response: any,
+    modalFormRef: MatDialogRef<FormComponent>
+  ) {
+    // this.typeApplication.update(response).subscribe({
+    //   next: (result) => {},
+    //   error: (error) => {},
+    // });
   }
 
   delete(id?: number) {
