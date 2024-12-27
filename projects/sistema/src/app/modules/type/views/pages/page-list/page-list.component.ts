@@ -230,11 +230,41 @@ export class PageListComponent {
     });
   }
 
-  delete(id?: number) {
+  delete(id: number) {
     const confirmRef: Observable<boolean> = this.utilsService.showConfirm({
       headerMessage: '¿Está seguro de eliminar?',
-      message:
-        'El tipo está siendo utilizado por al menos un producto, al actualizarlo puede causar errores. Se recomienda eliminar permanentement todos los productos relacionados con el tipo a actualizar para evitar inconsistencia en datos',
+    });
+
+    confirmRef.subscribe({
+      next: (response) => {
+        if (!response) return;
+
+        this.handleDelete(id);
+      },
+    });
+  }
+
+  private handleDelete(id: number) {
+    const loadingRef: MatDialogRef<LoadingComponent> =
+      this.utilsService.showLoading();
+
+    this.typeApplication.setActivation(id, false).subscribe({
+      next: () => {
+        loadingRef.close();
+        this.utilsService.showInformative(
+          OperationType.Deletion,
+          OperationState.Success
+        );
+        this.loadData();
+      },
+      error: (exception: ExceptionDto) => {
+        loadingRef.close();
+        this.utilsService.showInformative(
+          OperationType.Deletion,
+          OperationState.Error,
+          exception.message
+        );
+      },
     });
   }
 
