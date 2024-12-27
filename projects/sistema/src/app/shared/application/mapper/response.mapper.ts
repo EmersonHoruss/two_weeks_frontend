@@ -9,9 +9,9 @@ export class ResponseMapper<Entity, ShowDto> {
       content: Array.isArray(dto.content)
         ? dto.content.map(this.toEntityMapper)
         : this.toEntityMapper(dto.content),
-      pageIndex: dto.pageable.page.number,
-      pageSize: dto.pageable.page.size,
-      totalElements: dto.pageable.totalElements,
+      pageIndex: dto?.pageable?.page?.number,
+      pageSize: dto?.pageable?.page?.size,
+      totalElements: dto?.pageable?.totalElements,
     };
   }
 }
