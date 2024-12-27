@@ -67,59 +67,53 @@ export class FiltersComponent {
     this.loadingBrand = true;
     this.loadingSize = true;
 
-    setTimeout(() => {
-      this.typeApplication.list(this.requestTypeDto).subscribe({
-        next: (response: Response<Type>) => {
-          const { content } = response;
-          const types = (
-            !Array.isArray(content) || !content ? [] : content
-          ) as Array<Type>;
-          this.optionsType = types.map((type) => type.properties().name);
-        },
-        error: () => {
-          this.loadingType = false;
-        },
-        complete: () => {
-          this.loadingType = false;
-        },
-      });
-    }, 1000);
+    this.typeApplication.list(this.requestTypeDto).subscribe({
+      next: (response: Response<Type>) => {
+        const { content } = response;
+        const types = (
+          !Array.isArray(content) || !content ? [] : content
+        ) as Array<Type>;
+        this.optionsType = types.map((type) => type.properties().name);
+      },
+      error: () => {
+        this.loadingType = false;
+      },
+      complete: () => {
+        this.loadingType = false;
+      },
+    });
 
-    setTimeout(() => {
-      this.brandApplication.list(this.requestTypeDto).subscribe({
-        next: (response: Response<Brand>) => {
-          const { content } = response;
-          const brands = (
-            !Array.isArray(content) || !content ? [] : content
-          ) as Array<Brand>;
-          this.optionsBrand = brands.map((brand) => brand.properties().name);
-        },
-        error: () => {
-          this.loadingBrand = false;
-        },
-        complete: () => {
-          this.loadingBrand = false;
-        },
-      });
-    }, 2000);
+    this.brandApplication.list(this.requestTypeDto).subscribe({
+      next: (response: Response<Brand>) => {
+        const { content } = response;
+        const brands = (
+          !Array.isArray(content) || !content ? [] : content
+        ) as Array<Brand>;
+        this.optionsBrand = brands.map((brand) => brand.properties().name);
+      },
+      error: () => {
+        this.loadingBrand = false;
+      },
+      complete: () => {
+        this.loadingBrand = false;
+      },
+    });
 
-    setTimeout(() => {
-      this.sizeApplication.list(this.requestTypeDto).subscribe({
-        next: (response: Response<Size>) => {
-          const { content } = response;
-          const sizes = (
-            !Array.isArray(content) || !content ? [] : content
-          ) as Array<Size>;
-          this.optionsSize = sizes.map((size) => size.properties().name);
-        },
-        error: () => {
-          this.loadingSize = false;
-        },
-        complete: () => {
-          this.loadingSize = false;
-        },
-      });
-    }, 1000);
+    this.sizeApplication.list(this.requestTypeDto).subscribe({
+      next: (response: Response<Size>) => {
+        const { content } = response;
+        const sizes = (
+          !Array.isArray(content) || !content ? [] : content
+        ) as Array<Size>;
+        this.optionsSize = sizes.map((size) => size.properties().name);
+      },
+      error: () => {
+        this.loadingSize = false;
+      },
+      complete: () => {
+        this.loadingSize = false;
+      },
+    });
   }
 
   onChangeType($event: string | number) {

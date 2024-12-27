@@ -87,19 +87,17 @@ export class PageListComponent {
   private loadData() {
     this.loading = true;
 
-    setTimeout(() => {
-      this.productApplication.list(this.requestDto).subscribe({
-        next: (response: Response<Product>) => {
-          this.response = response;
-        },
-        error: (error: ExceptionDto) => {
-          this.loading = false;
-        },
-        complete: () => {
-          this.loading = false;
-        },
-      });
-    }, 1000);
+    this.productApplication.list(this.requestDto).subscribe({
+      next: (response: Response<Product>) => {
+        this.response = response;
+      },
+      error: (error: ExceptionDto) => {
+        this.loading = false;
+      },
+      complete: () => {
+        this.loading = false;
+      },
+    });
   }
 
   paginate($event: PageRequestDto) {
