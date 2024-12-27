@@ -13,8 +13,22 @@
   font-size: 3rem;
 }
 
+.message-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.3rem;
+  margin-bottom: 1.6rem;
+}
+
+.header-message {
+  font-weight: 500;
+  margin: 0;
+}
+
 .confirm-message {
-  margin-bottom: 1.8rem;
+  font-size: 0.9rem;
+  margin: 0;
 }
 
 .confirm-buttons {

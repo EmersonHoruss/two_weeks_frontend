@@ -178,9 +178,10 @@ export class PageListComponent {
     formValue: any,
     modalFormRef: MatDialogRef<FormComponent>
   ) {
-    const confirmRef: Observable<boolean> = this.utilsService.showConfirm(
-      'El tipo está siendo utilizado por al menos un producto, al actualizarlo puede causar errores. Se recomeinda eliminar permanentement todos los productos relacionados con el tipo a actualizar para evitar inconsistencia en datos.\n ¿Estás seguro de continuar?'
-    );
+    const confirmRef: Observable<boolean> = this.utilsService.showConfirm({
+      message:
+        'El tipo está siendo utilizado por al menos un producto, al actualizarlo puede causar errores. Se recomienda eliminar permanentement todos los productos relacionados con el tipo a actualizar para evitar inconsistencia en datos',
+    });
     confirmRef.subscribe({
       next: (response) => {
         if (response) this.continueUpdate(formValue, modalFormRef);
@@ -230,7 +231,11 @@ export class PageListComponent {
   }
 
   delete(id?: number) {
-    console.log('id to delete', id);
+    const confirmRef: Observable<boolean> = this.utilsService.showConfirm({
+      headerMessage: '¿Está seguro de eliminar?',
+      message:
+        'El tipo está siendo utilizado por al menos un producto, al actualizarlo puede causar errores. Se recomienda eliminar permanentement todos los productos relacionados con el tipo a actualizar para evitar inconsistencia en datos',
+    });
   }
 
   get dataSource(): Array<TypeDisplay> {

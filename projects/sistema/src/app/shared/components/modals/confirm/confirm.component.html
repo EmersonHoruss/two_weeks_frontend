@@ -1,7 +1,12 @@
 <div class="confirm-container">
   <mat-icon class="informative-icon" color="warn" fontIcon> warning </mat-icon>
 
-  <p class="confirm-message">{{ message }}</p>
+  <div class="message-wrapper">
+    <p class="header-message">{{ confirmData.headerMessage }}</p>
+    <p *ngIf="confirmData.message" class="confirm-message">
+      {{ confirmData.message }}
+    </p>
+  </div>
 
   <div class="confirm-buttons">
     <button mat-raised-button color="warn" (click)="onCancel()">Cancel</button>

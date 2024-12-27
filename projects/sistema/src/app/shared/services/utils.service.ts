@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ConfirmComponent } from '../components/modals/confirm/confirm.component';
+import {
+  ConfirmComponent,
+  ConfirmData,
+} from '../components/modals/confirm/confirm.component';
 import { Observable } from 'rxjs';
 import { LoadingComponent } from '../components/modals/loading/loading.component';
 import {
@@ -21,8 +24,6 @@ export enum OperationState {
 
 @Injectable()
 export class UtilsService {
-  private readonly DEFAULT_CONFIRM_MESSAGE = '¿Estás seguro de continuar?';
-
   private readonly DEFAULT_SUCCESS_CREATION_MESSAGE = 'Creación exitosa';
   private readonly DEFAULT_ERROR_CREATION_MESSAGE = 'Creación fallida';
 
@@ -43,11 +44,11 @@ export class UtilsService {
     return this.dialog.open(classComponent, options);
   }
 
-  showConfirm(message: string = this.DEFAULT_CONFIRM_MESSAGE): Observable<boolean> {
+  showConfirm(confirmData: ConfirmData): Observable<boolean> {
     const reference = this.dialog.open(ConfirmComponent, {
       width: this.DEFAULT_SIZE,
       disableClose: true,
-      data: message
+      data: confirmData,
     });
 
     return reference.afterClosed();
