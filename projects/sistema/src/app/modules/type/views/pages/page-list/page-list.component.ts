@@ -17,6 +17,8 @@ import { ExceptionDto } from '../../../../../shared/application/dtos/exception.d
 import { FormComponent } from '../../components/form/form.component';
 import { MatDialogRef } from '@angular/material/dialog';
 import { LoadingComponent } from '../../../../../shared/components/modals/loading/loading.component';
+import { Observable } from 'rxjs';
+import { ProductApplication } from '../../../../product/application/product/product.application';
 
 @Component({
   selector: 'tw-page-list',
@@ -41,7 +43,8 @@ export class PageListComponent {
 
   constructor(
     private readonly utilsService: UtilsService,
-    private readonly typeApplication: TypeApplication
+    private readonly typeApplication: TypeApplication,
+    private readonly productApplication: ProductApplication
   ) {
     this.initializeRequestDto();
     this.loadData();
@@ -123,7 +126,7 @@ export class PageListComponent {
     const type = new Type({ name: formValue.name });
 
     this.typeApplication.create(type).subscribe({
-      next: (result) => {
+      next: () => {
         modalFormRef.close();
         loadingRef.close();
         this.utilsService.showInformative(
@@ -132,24 +135,98 @@ export class PageListComponent {
         );
         this.loadData();
       },
-      error: (error) => {
+      error: (exception: ExceptionDto) => {
         loadingRef.close();
         this.utilsService.showInformative(
           OperationType.Creation,
-          OperationState.Error
+          OperationState.Error,
+          exception.message
         );
       },
     });
   }
 
   private handleUpdate(
-    response: any,
+    formValue: any,
     modalFormRef: MatDialogRef<FormComponent>
   ) {
-    // this.typeApplication.update(response).subscribe({
-    //   next: (result) => {},
-    //   error: (error) => {},
-    // });
+    const loadingRef: MatDialogRef<LoadingComponent> =
+      this.utilsService.showLoading();
+
+    const typeId = formValue.id;
+    this.productApplication.someProductHasType(typeId).subscribe({
+      next: (someProductHasType) => {
+        loadingRef.close();
+        if (someProductHasType) {
+          this.manageConfirmUpdating(formValue, modalFormRef);
+        } else {
+          this.continueUpdate(formValue, modalFormRef);
+        }
+      },
+      error: (exception: ExceptionDto) => {
+        loadingRef.close();
+        this.utilsService.showInformative(
+          OperationType.Updating,
+          OperationState.Error,
+          exception.message
+        );
+      },
+    });
+  }
+
+  private manageConfirmUpdating(
+    formValue: any,
+    modalFormRef: MatDialogRef<FormComponent>
+  ) {
+    const confirmRef: Observable<boolean> = this.utilsService.showConfirm(
+      'El tipo está siendo utilizado por al menos un producto, al actualizarlo puede causar errores. Se recomeinda eliminar permanentement todos los productos relacionados con el tipo a actualizar para evitar inconsistencia en datos.\n ¿Estás seguro de continuar?'
+    );
+    confirmRef.subscribe({
+      next: (response) => {
+        if (response) this.continueUpdate(formValue, modalFormRef);
+      },
+    });
+  }
+
+  private continueUpdate(
+    formValue: any,
+    modalFormRef: MatDialogRef<FormComponent>
+  ) {
+    const loadingRef: MatDialogRef<LoadingComponent> =
+      this.utilsService.showLoading();
+
+    const type = new Type({
+      id: formValue.id,
+      name: formValue.name,
+    });
+
+    this.typeApplication.update(type).subscribe({
+      next: (response: Response<Type>) => {
+        modalFormRef.close();
+        loadingRef.close();
+        this.utilsService.showInformative(
+          OperationType.Updating,
+          OperationState.Success
+        );
+        this.response.content = (this.response.content as Array<Type>).map(
+          (currentType: Type) => {
+            const currentTypeId = currentType.properties().id;
+            const updatedType = response.content as Type;
+            const updatedTypeId = updatedType.properties().id;
+
+            return currentTypeId === updatedTypeId ? updatedType : currentType;
+          }
+        );
+      },
+      error: (error: ExceptionDto) => {
+        loadingRef.close();
+        this.utilsService.showInformative(
+          OperationType.Updating,
+          OperationState.Error,
+          error.message
+        );
+      },
+    });
   }
 
   delete(id?: number) {
