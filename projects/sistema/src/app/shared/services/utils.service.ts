@@ -15,6 +15,8 @@ export enum OperationType {
   Creation = 'Creation',
   Updating = 'Updating',
   Deletion = 'Deletion',
+  Restore = 'Restore',
+  DeletionForever = 'DeletionForever',
 }
 
 export enum OperationState {
@@ -32,6 +34,14 @@ export class UtilsService {
 
   private readonly DEFAULT_SUCCESS_DELETION_MESSAGE = 'Eliminación exitosa';
   private readonly DEFAULT_ERROR_DELETION_MESSAGE = 'Eliminación fallida';
+
+  private readonly DEFAULT_SUCCESS_RESTORE_MESSAGE = 'Recuperación exitosa';
+  private readonly DEFAULT_ERROR_RESTORE_MESSAGE = 'Recuperación fallida';
+
+  private readonly DEFAULT_SUCCESS_DELETION_FOREVER_MESSAGE =
+    'Eliminación para siempre exitosa';
+  private readonly DEFAULT_ERROR_DELETION_FOREVER_MESSAGE =
+    'Eliminación para siempre fallida';
 
   private readonly DEFAULT_SIZE = '340px'; // it looks good in mobile devices
 
@@ -94,6 +104,24 @@ export class UtilsService {
 
       if (type === OperationType.Deletion && state === OperationState.Error)
         return this.DEFAULT_ERROR_DELETION_MESSAGE;
+
+      if (type === OperationType.Restore && state === OperationState.Success)
+        return this.DEFAULT_SUCCESS_RESTORE_MESSAGE;
+
+      if (type === OperationType.Restore && state === OperationState.Error)
+        return this.DEFAULT_ERROR_RESTORE_MESSAGE;
+
+      if (
+        type === OperationType.DeletionForever &&
+        state === OperationState.Success
+      )
+        return this.DEFAULT_SUCCESS_DELETION_FOREVER_MESSAGE;
+
+      if (
+        type === OperationType.DeletionForever &&
+        state === OperationState.Error
+      )
+        return this.DEFAULT_ERROR_DELETION_FOREVER_MESSAGE;
     }
 
     return message;
