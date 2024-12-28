@@ -4,7 +4,7 @@ import { environment } from '../../../environments/environment';
 import { ResponseDto } from '../application/dtos/response.dto';
 
 export abstract class BaseInfrastructure<CreateDto, UpdateDto, ShowDto> {
-  private apiUrl = `${environment.apiUrl}`;
+  protected apiUrl = `${environment.apiUrl}`;
 
   constructor(
     protected readonly http: HttpClient,
@@ -26,6 +26,7 @@ export abstract class BaseInfrastructure<CreateDto, UpdateDto, ShowDto> {
   }
 
   list(request: string): Observable<ResponseDto<ShowDto>> {
+    console.log("REQUEST",request)
     return request
       ? this.http.get<ResponseDto<ShowDto>>(`${this.apiUrl}?${request}`)
       : this.http.get<ResponseDto<ShowDto>>(this.apiUrl);
