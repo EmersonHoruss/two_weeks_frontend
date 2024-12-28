@@ -16,6 +16,7 @@ import { environment } from '../../../../../../environments/environment';
 import { ExceptionDto } from '../../../../../shared/application/dtos/exception.dto';
 import { MatDialogRef } from '@angular/material/dialog';
 import { LoadingComponent } from '../../../../../shared/components/modals/loading/loading.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'tw-page-list-garbage',
@@ -111,7 +112,47 @@ export class PageListGarbageComponent {
     });
   }
 
-  public deleteForever(id: number) {}
+  public deleteForever(id: number) {
+    const typeName = (this.response.content as Array<Type>)
+      .filter((type: Type) => +type.properties().id === +id)[0]
+      .properties().name;
+
+    const confirmRef: Observable<boolean> = this.utilsService.showConfirm({
+      headerMessage: `¿Estás seguro de eliminar el tipo: ${typeName}?`,
+      message: 'Después de eliminar el tipo será imposible recuperarlo',
+    });
+
+    confirmRef.subscribe({
+      next: (response) => {
+        if (response) this.continueDeleteForever(id);
+      },
+    });
+  }
+
+  private continueDeleteForever(id: number) {
+    const loadingRef: MatDialogRef<LoadingComponent> =
+      this.utilsService.showLoading();
+
+    this.typeApplication.delete(id).subscribe({
+      next: () => {
+        loadingRef.close();
+        this.utilsService.showInformative(
+          OperationType.DeletionForever,
+          OperationState.Success
+        );
+        this.loadData();
+      },
+      error: (exception: ExceptionDto) => {
+        console.log(exception)
+        loadingRef.close();
+        this.utilsService.showInformative(
+          OperationType.DeletionForever,
+          OperationState.Error,
+          exception.message
+        );
+      },
+    });
+  }
 
   get dataSource(): Array<TypeDisplay> {
     if (!this.response) return [];

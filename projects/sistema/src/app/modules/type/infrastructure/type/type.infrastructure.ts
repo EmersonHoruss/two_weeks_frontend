@@ -7,6 +7,7 @@ import {
 } from '../../application/type/type.dto';
 import { TypeRepository } from '../../domain/type/type.repository';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class TypeInfrastructure
@@ -15,5 +16,9 @@ export class TypeInfrastructure
 {
   constructor(protected readonly httpClient: HttpClient) {
     super(httpClient, '/types');
+  }
+
+  delete(id: number): Observable<undefined> {
+    return this.http.delete<undefined>(`${this.apiUrl}/${id}`);
   }
 }
