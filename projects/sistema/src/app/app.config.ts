@@ -3,7 +3,7 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { PaginatorService } from './shared/services/paginator.service';
 import { LAYOUT_TOKEN } from './config/injections/layout/tokens/layout.token';
@@ -46,13 +46,14 @@ import { SizeInfrastructure } from './modules/size/infrastructure/size/size.infr
 import { TypeApplication } from './modules/type/application/type/type.application';
 import { TypeMapper } from './modules/type/application/type/type.mapper';
 import { TypeInfrastructure } from './modules/type/infrastructure/type/type.infrastructure';
-
+import { ExceptionInterceptor } from './shared/interceptors/exception.interceptor';
+import { ExceptionMapper } from './shared/application/mapper/exception.mapper';
 
 const angular = [
   provideZoneChangeDetection({ eventCoalescing: true }),
   provideRouter(routes),
   provideAnimationsAsync(),
-  provideHttpClient(),
+  provideHttpClient(withInterceptors([ExceptionInterceptor])),
 ];
 const material = [{ provide: MatPaginatorIntl, useClass: PaginatorService }];
 const layout = [{ provide: LAYOUT_TOKEN, useValue: layoutConstant }];
@@ -95,6 +96,8 @@ const application = [
   UserApplication,
 ];
 const mappers = [
+  ExceptionMapper,
+
   PointOfSaleMapper,
 
   TypeMapper,
@@ -110,9 +113,6 @@ const mappers = [
   ProfileMapper,
   UserMapper,
 ];
-const interceptors = [
-  { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
-];
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -122,6 +122,5 @@ export const appConfig: ApplicationConfig = {
     ...infraestructure,
     ...application,
     ...mappers,
-    ...interceptors,
   ],
 };

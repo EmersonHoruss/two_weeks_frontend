@@ -1,6 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { ExceptionDto, SIGN } from '../dtos/exception.dto';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class ExceptionMapper {
   toExceptionDto(exception: HttpErrorResponse): ExceptionDto {
     const { error, status: statusCode } = exception;
