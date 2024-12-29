@@ -26,7 +26,6 @@ export abstract class BaseInfrastructure<CreateDto, UpdateDto, ShowDto> {
   }
 
   list(request: string): Observable<ResponseDto<ShowDto>> {
-    console.log("REQUEST",request)
     return request
       ? this.http.get<ResponseDto<ShowDto>>(`${this.apiUrl}?${request}`)
       : this.http.get<ResponseDto<ShowDto>>(this.apiUrl);
