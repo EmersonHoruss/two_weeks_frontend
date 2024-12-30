@@ -7,6 +7,7 @@ import {
 } from '../../application/brand/brand.dto';
 import { BrandRepository } from '../../domain/brand/brand.repository';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class BrandInfrastructure
@@ -15,5 +16,9 @@ export class BrandInfrastructure
 {
   constructor(protected readonly httpClient: HttpClient) {
     super(httpClient, '/brands');
+  }
+
+  delete(id: number): Observable<undefined> {
+    return this.http.delete<undefined>(`${this.apiUrl}/${id}`);
   }
 }

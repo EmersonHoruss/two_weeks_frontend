@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { BaseRepository } from '../../../../shared/domain/base.repository';
 import {
   BrandCreateDto,
@@ -6,4 +7,6 @@ import {
 } from '../../application/brand/brand.dto';
 
 export interface BrandRepository
-  extends BaseRepository<BrandCreateDto, BrandUpdateDto, BrandShowDto> {}
+  extends BaseRepository<BrandCreateDto, BrandUpdateDto, BrandShowDto> {
+  delete(id: number): Observable<undefined>;
+}

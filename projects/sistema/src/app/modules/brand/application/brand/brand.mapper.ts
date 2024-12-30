@@ -8,20 +8,20 @@ export class BrandMapper
   implements IMapper<Brand, BrandCreateDto, BrandUpdateDto, BrandShowDto>
 {
   toEntity(showDto: BrandShowDto): Brand {
-    const { id, name, activated } = showDto;
+    const { id, name, code, activated } = showDto;
 
-    return new Brand({ id, name, activated });
+    return new Brand({ id, name, code, activated });
   }
 
   toCreateDto(entity: Brand): BrandCreateDto {
     const { name } = entity.properties();
-    
+
     return { name };
   }
 
   toUpdateDto(entity: Brand): BrandUpdateDto {
     const { id, name } = entity.properties();
-    
+
     return { id, name };
   }
 }

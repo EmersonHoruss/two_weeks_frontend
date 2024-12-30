@@ -4,6 +4,7 @@ export interface BrandRequired {
 
 export interface BrandOptional {
   id: number;
+  code: string;
   activated: boolean;
 }
 
@@ -11,9 +12,14 @@ export type BrandProperties = Required<BrandRequired> & Partial<BrandOptional>;
 
 export type BrandUpdate = Partial<{ id: number; name: string }>;
 
+export type BrandDisplay = BrandProperties & {
+  '#': number;
+};
+
 export class Brand {
   private readonly id: number;
   private name: string;
+  private code: string;
   private activated: boolean;
 
   constructor(properties: BrandProperties) {
@@ -24,6 +30,7 @@ export class Brand {
     return {
       id: this.id,
       name: this.name,
+      code: this.code,
       activated: this.activated,
     };
   }
@@ -34,5 +41,12 @@ export class Brand {
 
   delete() {
     this.activated = false;
+  }
+
+  display(): BrandDisplay {
+    return {
+      ...this.properties(),
+      '#': null,
+    };
   }
 }

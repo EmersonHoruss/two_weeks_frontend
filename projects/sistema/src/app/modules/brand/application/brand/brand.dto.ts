@@ -10,5 +10,6 @@ export interface BrandUpdateDto {
 export interface BrandShowDto {
   id: number;
   name: string;
+  code: string;
   activated: boolean;
 }
