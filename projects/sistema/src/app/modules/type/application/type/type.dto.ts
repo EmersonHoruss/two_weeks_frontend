@@ -10,5 +10,6 @@ export interface TypeUpdateDto {
 export interface TypeShowDto {
   id: number;
   name: string;
+  code: string;
   activated: boolean;
 }

@@ -4,6 +4,7 @@ export interface TypeRequired {
 
 export interface TypeOptional {
   id: number;
+  code: string;
   activated: boolean;
 }
 
@@ -18,6 +19,7 @@ export type TypeDisplay = TypeProperties & {
 export class Type {
   private readonly id: number;
   private name: string;
+  private code: string;
   private activated: boolean;
 
   constructor(properties: TypeProperties) {
@@ -28,6 +30,7 @@ export class Type {
     return {
       id: this.id,
       name: this.name,
+      code: this.code,
       activated: this.activated,
     };
   }

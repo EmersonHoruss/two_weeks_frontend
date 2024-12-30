@@ -8,20 +8,20 @@ export class TypeMapper
   implements IMapper<Type, TypeCreateDto, TypeUpdateDto, TypeShowDto>
 {
   toEntity(showDto: TypeShowDto): Type {
-    const { id, name, activated } = showDto;
+    const { id, name, code, activated } = showDto;
 
-    return new Type({ id, name, activated });
+    return new Type({ id, name, code, activated });
   }
 
   toCreateDto(entity: Type): TypeCreateDto {
     const { name } = entity.properties();
-    
+
     return { name };
   }
 
   toUpdateDto(entity: Type): TypeUpdateDto {
     const { id, name } = entity.properties();
-    
+
     return { id, name };
   }
 }
