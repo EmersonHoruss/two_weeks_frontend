@@ -1,6 +1,38 @@
 <tw-title [hardDeletionEnabled]="true" [isMasculine]="false">
-  <button mat-flat-button color="primary" btnAction (click)="showModalWindow()">
+  <button mat-flat-button color="primary" btnAction (click)="createOrUpdate()">
     <mat-icon>add</mat-icon>
     Agregar
   </button>
 </tw-title>
+
+<tw-container>
+  <tw-filter (onChangeFilter)="filter($event)"></tw-filter>
+
+  <div class="page-list-content scrollable-container scroll">
+    <tw-table
+      [metaColumns]="metaColumns"
+      [dataSource]="dataSource"
+      [pluralEntity]="pluralEntity"
+      [loading]="loading"
+    >
+      <ng-container matColumnDef="actions" stickyEnd>
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let row" class="actions">
+          <button mat-icon-button color="primary" (click)="createOrUpdate(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button mat-icon-button color="warn" (click)="delete(row?.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+    </tw-table>
+  </div>
+
+  <tw-paginator
+    [length]="response?.totalElements"
+    [pageSize]="response?.pageSize"
+    (onChangePage)="paginate($event)"
+  />
+</tw-container>

@@ -1,1 +1,25 @@
-<p>filter works!</p>
+<div class="filters-wrapper">
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ label }}</mat-label>
+
+      <input
+        matInput
+        formControlName="inputControl"
+        [placeholder]="placeholder"
+      />
+
+      <button
+        *ngIf="clearable"
+        matSuffix
+        mat-icon-button
+        aria-label="clear"
+        (click)="clearInput()"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </form>
+
+  <button mat-flat-button class="search" (click)="search()">Buscar</button>
+</div>
