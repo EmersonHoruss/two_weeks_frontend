@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { TypeApplication } from '../../../application/type/type.application';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -19,7 +18,7 @@ export class FiltersComponent {
 
   @Output() onChangeFilter: EventEmitter<string> = new EventEmitter();
 
-  constructor(private readonly typeApplication: TypeApplication) {
+  constructor() {
     this.form = new FormGroup({
       inputControl: new FormControl(''),
     });
