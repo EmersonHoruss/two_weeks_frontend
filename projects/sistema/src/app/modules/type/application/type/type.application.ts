@@ -8,7 +8,6 @@ import { TypeMapper } from './type.mapper';
 import { catchError, map, Observable, of } from 'rxjs';
 import { RequestDto } from '../../../../shared/application/dtos/request.dto';
 import { Response } from '../../../../shared/domain/response';
-import { ProductApplication } from '../../../product/application/product/product.application';
 
 @Injectable()
 export class TypeApplication extends BaseApplication<
@@ -21,8 +20,7 @@ export class TypeApplication extends BaseApplication<
   constructor(
     @Inject(TypeInfrastructure)
     private readonly typeRepository: TypeRepository,
-    private readonly typeMapper: TypeMapper,
-    private readonly productRepository: ProductApplication
+    private readonly typeMapper: TypeMapper
   ) {
     super(typeRepository, typeMapper);
   }
