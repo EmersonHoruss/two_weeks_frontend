@@ -178,7 +178,7 @@ export class PageListComponent {
   ) {
     const confirmRef: Observable<boolean> = this.utilsService.showConfirm({
       message:
-        'El tipo está siendo utilizado por al menos un producto, al actualizarlo puede causar errores. Se recomienda eliminar permanentement todos los productos relacionados con el tipo a actualizar para evitar inconsistencia en datos',
+        'El tipo está siendo utilizado por al menos un producto, al actualizarlo puede causar errores. Se recomienda eliminar permanentemente todos los productos relacionados con el tipo a actualizar para evitar inconsistencia en datos',
     });
     confirmRef.subscribe({
       next: (response) => {
