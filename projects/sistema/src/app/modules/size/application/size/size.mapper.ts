@@ -8,20 +8,20 @@ export class SizeMapper
   implements IMapper<Size, SizeCreateDto, SizeUpdateDto, SizeShowDto>
 {
   toEntity(showDto: SizeShowDto): Size {
-    const { id, name, activated } = showDto;
+    const { id, name, code, activated } = showDto;
 
-    return new Size({ id, name, activated });
+    return new Size({ id, name, code, activated });
   }
 
   toCreateDto(entity: Size): SizeCreateDto {
     const { name } = entity.properties();
-    
+
     return { name };
   }
 
   toUpdateDto(entity: Size): SizeUpdateDto {
     const { id, name } = entity.properties();
-    
+
     return { id, name };
   }
 }

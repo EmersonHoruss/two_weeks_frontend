@@ -10,5 +10,6 @@ export interface SizeUpdateDto {
 export interface SizeShowDto {
   id: number;
   name: string;
+  code: string;
   activated: boolean;
 }

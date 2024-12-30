@@ -7,6 +7,7 @@ import {
 } from '../../application/size/size.dto';
 import { SizeRepository } from '../../domain/size/size.repository';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class SizeInfrastructure
@@ -15,5 +16,9 @@ export class SizeInfrastructure
 {
   constructor(protected readonly httpClient: HttpClient) {
     super(httpClient, '/sizes');
+  }
+
+  delete(id: number): Observable<undefined> {
+    return this.http.delete<undefined>(`${this.apiUrl}/${id}`);
   }
 }
