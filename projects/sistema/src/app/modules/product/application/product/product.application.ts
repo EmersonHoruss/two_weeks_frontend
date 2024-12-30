@@ -43,4 +43,34 @@ export class ProductApplication extends BaseApplication<
       catchError(() => of(false))
     );
   }
+
+  someProductHasBrand(brandId: number): Observable<boolean> {
+    const requestDto: RequestDto = {
+      page: { page: 0, size: 1 },
+      query: `brand.id<eq>${brandId}`,
+    };
+
+    return this.list(requestDto).pipe(
+      map((response: Response<Product>) => {
+        const products = response.content as Array<Product>;
+        return !!products.length;
+      }),
+      catchError(() => of(false))
+    );
+  }
+
+  someProductHasSize(sizeId: number): Observable<boolean> {
+    const requestDto: RequestDto = {
+      page: { page: 0, size: 1 },
+      query: `size.id<eq>${sizeId}`,
+    };
+
+    return this.list(requestDto).pipe(
+      map((response: Response<Product>) => {
+        const products = response.content as Array<Product>;
+        return !!products.length;
+      }),
+      catchError(() => of(false))
+    );
+  }
 }
