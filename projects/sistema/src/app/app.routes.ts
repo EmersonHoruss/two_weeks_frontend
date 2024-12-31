@@ -9,6 +9,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'etiquetas',
+    loadChildren: () =>
+      import('./modules/label/label.module').then(
+        (module) => module.LabelModule
+      ),
+  },
+  {
     path: 'productos',
     loadChildren: () =>
       import('./modules/product/product.module').then(
@@ -36,6 +43,11 @@ export const routes: Routes = [
     path: 'ventas',
     loadChildren: () =>
       import('./modules/sell/sell.module').then((module) => module.SellModule),
+  },
+  {
+    path: 'compras',
+    loadChildren: () =>
+      import('./modules/buy/buy.module').then((module) => module.BuyModule),
   },
   {
     path: 'usuarios',

@@ -22,6 +22,12 @@ export class MenuService {
         foreignToMaterial: false,
       },
       {
+        title: 'Etiquetas',
+        url: '/etiquetas',
+        icon: 'label',
+        foreignToMaterial: false,
+      },
+      {
         title: 'Productos',
         url: '/productos',
         icon: 'inventory_2',
@@ -61,6 +67,18 @@ export class MenuService {
         title: 'Ventas',
         url: '/ventas',
         icon: 'confirmation_number',
+        foreignToMaterial: false,
+      },
+      {
+        title: 'Comprar',
+        url: '/compras/comprar',
+        icon: 'shopping_bag',
+        foreignToMaterial: false,
+      },
+      {
+        title: 'Compras',
+        url: '/compras',
+        icon: 'receipt_long',
         foreignToMaterial: false,
       },
       {
