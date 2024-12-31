@@ -1,7 +1,7 @@
 import { Product } from '../product/product';
 
 export enum OperationType {
-  Add = 'Agregar',
+  Add = 'Crear',
   Subtract = 'Quitar',
 }
 
