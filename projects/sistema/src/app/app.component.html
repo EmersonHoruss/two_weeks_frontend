@@ -1,14 +1,26 @@
 <mat-sidenav-container>
-  <mat-sidenav [opened]="isOpened" mode="side" *ngIf="!layout.menuHidden">
-    <div class="logo">
-      <!-- <mat-icon svgIcon="logo"></mat-icon> -->
-    </div>
+  <mat-sidenav
+    [opened]="isOpened"
+    [mode]="isMobile ? 'over' : 'side'"
+    [disableClose]="isMobile"
+    *ngIf="!layout.menuHidden"
+  >
+    <div class="logo"></div>
+
+    <button
+      *ngIf="isMobile"
+      mat-icon-button
+      class="close-btn"
+      (click)="toggleSidenav()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
     <tw-menu></tw-menu>
   </mat-sidenav>
 
   <mat-sidenav-content>
     <tw-header
-      (onToggleMenu)="isOpened = !isOpened"
+      (onToggleMenu)="toggleSidenav()"
       *ngIf="!layout.headerHidden"
     ></tw-header>
 

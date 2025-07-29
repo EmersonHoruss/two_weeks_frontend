@@ -8,6 +8,8 @@ import { LayoutService } from './config/injections/layout/services/layout.servic
 import { ILayout } from './config/injections/layout/interfaces/layout.interface';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'tw-root',
@@ -24,14 +26,27 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class AppComponent {
   isOpened = true;
+  isMobile = false;
   layout!: ILayout;
 
   constructor(
     private readonly iconService: IconService,
-    private readonly layoutService: LayoutService
+    private readonly layoutService: LayoutService,
+    private breakpointObserver: BreakpointObserver
   ) {
     this.layoutService.getConfiguration().subscribe((layout: ILayout) => {
       this.layout = layout;
     });
+
+    this.breakpointObserver
+      .observe([Breakpoints.Handset])
+      .pipe(map((result) => result.matches))
+      .subscribe((isMobile) => {
+        this.isMobile = isMobile;
+      });
+  }
+
+  toggleSidenav() {
+    this.isOpened = !this.isOpened;
   }
 }

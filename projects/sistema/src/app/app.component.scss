@@ -19,3 +19,10 @@ div.logo mat-icon {
   padding-bottom: 20px;
   padding-top: 10px;
 }
+
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+}
