@@ -4,54 +4,35 @@ export const routes: Routes = [
   {
     path: 'caja',
     loadChildren: () =>
-      import('./modules/point-of-sale/point-of-sale.module').then(
-        (module) => module.PointOfSaleModule
+      import('./modules/caja/caja.module').then((module) => module.CajaModule),
+  },
+  {
+    path: 'distribuidores',
+    loadChildren: () =>
+      import('./modules/distribuidores/distribuidores.module').then(
+        (m) => m.DistribuidoresModule
       ),
-  },
-  {
-    path: 'etiquetas',
-    loadChildren: () =>
-      import('./modules/label/label.module').then(
-        (module) => module.LabelModule
-      ),
-  },
-  {
-    path: 'productos',
-    loadChildren: () =>
-      import('./modules/product/product.module').then(
-        (module) => module.ProductModule
-      ),
-  },
-  {
-    path: 'tipos',
-    loadChildren: () =>
-      import('./modules/type/type.module').then((module) => module.TypeModule),
-  },
-  {
-    path: 'marcas',
-    loadChildren: () =>
-      import('./modules/brand/brand.module').then(
-        (module) => module.BrandModule
-      ),
-  },
-  {
-    path: 'tallas',
-    loadChildren: () =>
-      import('./modules/size/size.module').then((module) => module.SizeModule),
-  },
-  {
-    path: 'ventas',
-    loadChildren: () =>
-      import('./modules/sell/sell.module').then((module) => module.SellModule),
   },
   {
     path: 'compras',
     loadChildren: () =>
-      import('./modules/buy/buy.module').then((module) => module.BuyModule),
+      import('./modules/compras/compras.module').then((m) => m.ComprasModule),
   },
   {
     path: 'usuarios',
     loadChildren: () =>
-      import('./modules/user/user.module').then((module) => module.UserModule),
+      import('./modules/usuarios/usuarios.module').then(
+        (m) => m.UsuariosModule
+      ),
+  },
+  {
+    path: 'ventas',
+    loadChildren: () =>
+      import('./modules/ventas/ventas.module').then((m) => m.VentasModule),
+  },
+  {
+    path: 'sistema',
+    loadChildren: () =>
+      import('./modules/sistema/sistema.module').then((m) => m.SistemaModule),
   },
 ];

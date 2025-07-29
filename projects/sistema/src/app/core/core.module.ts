@@ -15,6 +15,7 @@ import { LoginComponent } from './views/components/login/login.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 const declarations = [
   HeaderComponent,
@@ -35,6 +36,7 @@ const imports = [
   MatFormFieldModule,
   MatInputModule,
   ReactiveFormsModule,
+  MatExpansionModule,
 ];
 
 const exports = [HeaderComponent, SidebarComponent, MenuComponent];

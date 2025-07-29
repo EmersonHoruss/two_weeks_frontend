@@ -1,23 +1,17 @@
-<mat-nav-list>
-  <mat-list-item
-    *ngFor="let menuItem of menu"
-    routerLinkActive="active-link"
-    [routerLinkActiveOptions]="{ exact: true }"
-  >
-    <a routerLink="{{ menuItem.url }}">
-      <button mat-icon-button class="hi">
-        <div>
-          <mat-icon
-            *ngIf="menuItem.foreignToMaterial; else foreignToMaterial"
-            [svgIcon]="menuItem.icon"
-          ></mat-icon>
-          <ng-template #foreignToMaterial>
-            <mat-icon color="secondary">{{ menuItem.icon }}</mat-icon>
-          </ng-template>
-        </div>
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let item of menuItems">
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{ item.label }}</mat-panel-title>
+    </mat-expansion-panel-header>
 
-        <span class="title">{{ menuItem.title }}</span>
-      </button>
-    </a>
-  </mat-list-item>
-</mat-nav-list>
+    <ng-container *ngIf="item.children?.length">
+      <div class="submenu" *ngFor="let child of item.children">
+        <a mat-button [routerLink]="child.route">{{ child.label }}</a>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="!item.children">
+      <a mat-button [routerLink]="item.route">Ir a {{ item.label }}</a>
+    </ng-container>
+  </mat-expansion-panel>
+</mat-accordion>
