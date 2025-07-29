@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'tw-root',
@@ -20,6 +21,7 @@ import { map } from 'rxjs/operators';
     MatSidenavModule,
     MatIconModule,
     ReactiveFormsModule,
+    MatButtonModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

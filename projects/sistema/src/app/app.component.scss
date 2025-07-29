@@ -8,6 +8,7 @@ mat-sidenav {
   width: 280px;
   background-color: whitesmoke;
   border-radius: 0;
+  overflow: visible;
 }
 
 div.logo mat-icon {
@@ -22,7 +23,8 @@ div.logo mat-icon {
 
 .close-btn {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 0px;
+  right: 0px;
+  transform: translateX(100%);
   z-index: 1;
 }
