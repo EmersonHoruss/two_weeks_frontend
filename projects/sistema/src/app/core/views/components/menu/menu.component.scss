@@ -1,0 +1,30 @@
+.menu-tree {
+  width: 280px;
+  background-color: transparent;
+  padding: 8px 0;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 15px;
+  border-radius: 4px;
+  color: #333;
+  width: 100%;
+
+  &:hover {
+    background-color: #e0e0e0;
+  }
+
+  .menu-icon {
+    margin-right: 12px;
+    color: #3f51b5;
+  }
+
+  .expand-icon {
+    margin-left: auto;
+    color: #757575;
+  }
+}
