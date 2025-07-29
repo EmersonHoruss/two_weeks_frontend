@@ -5,7 +5,7 @@ import { PageRegistrarComponent } from './views/pages/page-registrar/page-regist
 
 const routes: Routes = [
   { path: '', redirectTo: 'listar', pathMatch: 'full' },
-  { path: '/listar', component: PageListComponent },
+  { path: 'listar', component: PageListComponent },
   { path: 'registrar', component: PageRegistrarComponent },
   { path: 'registrar/:id', component: PageRegistrarComponent },
 ];
