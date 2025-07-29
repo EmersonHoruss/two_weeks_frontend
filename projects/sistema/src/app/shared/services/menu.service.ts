@@ -14,6 +14,7 @@ export class MenuService {
   private menu: Menu[];
 
   constructor() {
+    
     this.menu = [
       {
         title: 'Ver Caja',

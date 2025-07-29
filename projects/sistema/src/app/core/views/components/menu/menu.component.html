@@ -16,9 +16,14 @@
 
   <!-- Leaf node -->
   <mat-tree-node *matTreeNodeDef="let node">
-    <div class="menu-item" [style.paddingLeft.px]="node.level * 16 + 16">
+    <a
+      class="menu-item"
+      [routerLink]="node.route"
+      routerLinkActive="active"
+      [style.paddingLeft.px]="node.level * 16 + 16"
+    >
       <mat-icon class="menu-icon">{{ node.icon }}</mat-icon>
       <span class="label">{{ node.label }}</span>
-    </div>
+    </a>
   </mat-tree-node>
 </mat-tree>

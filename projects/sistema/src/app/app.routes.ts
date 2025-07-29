@@ -57,4 +57,13 @@ export const routes: Routes = [
         (m) => m.ReportesModule
       ),
   },
+  {
+    path: '',
+    redirectTo: 'inicio',
+    pathMatch: 'full',
+  },
+  // {
+  //   path: '**',
+  //   component: PageNotFoundComponent,
+  // },
 ];
