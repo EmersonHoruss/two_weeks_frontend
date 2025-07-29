@@ -18,7 +18,7 @@
   <mat-tree-node *matTreeNodeDef="let node">
     <a
       class="menu-item"
-      [routerLink]="node.route"
+      [routerLink]="node.url"
       routerLinkActive="active"
       [style.paddingLeft.px]="node.level * 16 + 16"
     >

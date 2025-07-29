@@ -4,8 +4,8 @@ import { PageListComponent } from './views/pages/page-list/page-list.component';
 import { PageRegistrarComponent } from './views/pages/page-registrar/page-registrar.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'listar', pathMatch: 'full' },
-  { path: 'listar', component: PageListComponent },
+  { path: '', redirectTo: 'historia', pathMatch: 'full' },
+  { path: 'historia', component: PageListComponent },
   { path: 'abrir', component: PageRegistrarComponent },
   { path: 'cerrar/:id', component: PageRegistrarComponent },
 ];

@@ -1,5 +1,5 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
-import { Menu, MenuService } from '../../services/menu.service';
+import { MenuNode, MenuService } from '../../services/menu.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   encapsulation: ViewEncapsulation.None,
 })
 export class TitleComponent {
-  menuItem!: Menu;
+  menuItem!: MenuNode;
 
   @Input() hardDeletionEnabled: boolean = false;
   @Input() isMasculine: boolean = true;

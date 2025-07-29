@@ -1,131 +1,189 @@
 import { Injectable } from '@angular/core';
 
-export interface Menu {
-  title: string;
-  url: string;
+export interface MenuNode {
+  label: string;
   icon: string;
-  foreignToMaterial: boolean;
+  url?: string;
+  title?: string;
+  foreignToMaterial?: boolean;
+  children?: MenuNode[];
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class MenuService {
-  private menu: Menu[];
+  private menu: MenuNode[];
 
   constructor() {
-    
     this.menu = [
       {
-        title: 'Ver Caja',
-        url: '/caja/ver',
-        icon: 'visibility',
+        label: 'Inicio',
+        icon: 'home',
+        url: '/inicio',
+        title: 'Bienvenido',
         foreignToMaterial: false,
       },
       {
-        title: 'Abrir Caja',
-        url: '/caja/abrir',
-        icon: 'lock_open',
-        foreignToMaterial: false,
-      },
-      {
-        title: 'Cerrar Caja',
-        url: '/caja/cerrar',
-        icon: 'lock',
-        foreignToMaterial: false,
-      },
-
-      {
-        title: 'Ver Distribuidores',
-        url: '/distribuidores/ver',
-        icon: 'groups',
-        foreignToMaterial: false,
-      },
-      {
-        title: 'Crear Distribuidor',
-        url: '/distribuidores/crear',
-        icon: 'person_add',
-        foreignToMaterial: false,
-      },
-      {
-        title: 'Actualizar Distribuidor',
-        url: '/distribuidores/actualizar',
-        icon: 'edit',
-        foreignToMaterial: false,
-      },
-
-      {
-        title: 'Comprar',
-        url: '/compras/crear',
-        icon: 'shopping_cart',
-        foreignToMaterial: false,
-      },
-      {
-        title: 'Ver Compras',
-        url: '/compras/ver',
-        icon: 'receipt_long',
-        foreignToMaterial: false,
-      },
-      {
-        title: 'Actualizar Compra',
-        url: '/compras/actualizar',
-        icon: 'sync',
-        foreignToMaterial: false,
-      },
-
-      {
-        title: 'Crear Usuario',
-        url: '/usuarios/crear',
-        icon: 'person_add',
-        foreignToMaterial: false,
-      },
-      {
-        title: 'Actualizar Usuario',
-        url: '/usuarios/actualizar',
-        icon: 'edit',
-        foreignToMaterial: false,
-      },
-      {
-        title: 'Ver Usuarios',
-        url: '/usuarios/ver',
-        icon: 'group',
-        foreignToMaterial: false,
-      },
-
-      {
-        title: 'Vender',
-        url: '/ventas/crear',
-        icon: 'point_of_sale',
-        foreignToMaterial: false,
-      },
-      {
-        title: 'Ver Ventas',
-        url: '/ventas/ver',
-        icon: 'list_alt',
-        foreignToMaterial: false,
-      },
-      {
-        title: 'Actualizar Venta',
-        url: '/ventas/actualizar',
-        icon: 'autorenew',
-        foreignToMaterial: false,
-      },
-
-      {
-        title: 'Sistema',
-        url: '/sistema',
+        label: 'Sistema',
         icon: 'settings',
+        url: '/sistema',
+        title: 'Sistema',
+        foreignToMaterial: false,
+      },
+      {
+        label: 'Caja',
+        icon: 'account_balance_wallet',
+        children: [
+          {
+            label: 'Abrir/Cerrar',
+            icon: 'lock_open',
+            url: '/caja/abrir',
+            title: 'Abrir/Cerrar Caja',
+            foreignToMaterial: false,
+          },
+          {
+            label: 'Historial',
+            icon: 'history',
+            url: '/caja/historia',
+            title: 'Historia de Caja',
+            foreignToMaterial: false,
+          },
+        ],
+      },
+      {
+        label: 'Compras',
+        icon: 'shopping_cart',
+        children: [
+          {
+            label: 'Registrar',
+            icon: 'note_add',
+            url: '/compras/registrar',
+            title: 'Registrar Compra',
+            foreignToMaterial: false,
+          },
+          {
+            label: 'Lista',
+            icon: 'list',
+            url: '/compras/listar',
+            title: 'Lista de Compras',
+            foreignToMaterial: false,
+          },
+        ],
+      },
+      {
+        label: 'Ventas',
+        icon: 'point_of_sale',
+        children: [
+          {
+            label: 'Registrar',
+            icon: 'note_add',
+            url: '/ventas/registrar',
+            title: 'Registrar Venta',
+            foreignToMaterial: false,
+          },
+          {
+            label: 'Lista',
+            icon: 'list',
+            url: '/ventas/listar',
+            title: 'Lista de Ventas',
+            foreignToMaterial: false,
+          },
+        ],
+      },
+      {
+        label: 'Usuarios',
+        icon: 'group',
+        children: [
+          {
+            label: 'Registrar',
+            icon: 'person_add',
+            url: '/usuarios/registrar',
+            title: 'Registrar Usuario',
+            foreignToMaterial: false,
+          },
+          {
+            label: 'Lista',
+            icon: 'list',
+            url: '/usuarios/listar',
+            title: 'Lista de Usuarios',
+            foreignToMaterial: false,
+          },
+        ],
+      },
+      {
+        label: 'Distribuidores',
+        icon: 'local_shipping',
+        children: [
+          {
+            label: 'Registrar',
+            icon: 'note_add',
+            url: '/distribuidores/registrar',
+            title: 'Registrar Distribuidor',
+            foreignToMaterial: false,
+          },
+          {
+            label: 'Lista',
+            icon: 'list',
+            url: '/distribuidores/listar',
+            title: 'Lista de Distribuidores',
+            foreignToMaterial: false,
+          },
+        ],
+      },
+      {
+        label: 'Productos',
+        icon: 'inventory',
+        children: [
+          {
+            label: 'Registrar',
+            icon: 'note_add',
+            url: '/productos/registrar',
+            title: 'Registrar Producto',
+            foreignToMaterial: false,
+          },
+          {
+            label: 'Lista',
+            icon: 'list',
+            url: '/productos/listar',
+            title: 'Lista de Productos',
+            foreignToMaterial: false,
+          },
+        ],
+      },
+      {
+        label: 'Reportes',
+        icon: 'bar_chart',
+        url: '/reportes',
+        title: 'Reportes',
         foreignToMaterial: false,
       },
     ];
   }
 
-  getItems(): Menu[] {
-    return [...this.menu];
+  getMenu(): MenuNode[] {
+    return this.menu;
   }
 
-  getDataPath(currentPath: string): Menu {
-    const menu = this.menu.find((el: Menu) => el.url === currentPath);
-    return menu as Menu;
+  getLeafNodes(): MenuNode[] {
+    const result: MenuNode[] = [];
+
+    const collectLeafNodes = (nodes: MenuNode[]) => {
+      for (const node of nodes) {
+        if (node.children && node.children.length > 0) {
+          collectLeafNodes(node.children);
+        } else {
+          result.push(node);
+        }
+      }
+    };
+
+    collectLeafNodes(this.menu);
+
+    return result;
+  }
+
+  getDataPath(currentPath: string): MenuNode {
+    return this.getLeafNodes().find((el: MenuNode) => el.url === currentPath);
   }
 }
