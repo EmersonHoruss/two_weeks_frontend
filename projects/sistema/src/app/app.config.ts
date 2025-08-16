@@ -21,6 +21,9 @@ import { CajaMapper } from './modules/caja/application/caja/caja.mapper';
 import { SistemaApplication } from './modules/sistema/application/sistema/sistema.application';
 import { SistemaMapper } from './modules/sistema/application/sistema/sistema.mapper';
 import { SistemaInfrastructure } from './modules/sistema/infraestructure/sistema/sistema.infrastructure';
+import { DistribuidorInfrastructure } from './modules/distribuidores/infraestructure/distribuidor/distribuidor.infrastructure';
+import { DistribuidorApplication } from './modules/distribuidores/application/distribuidor/distribuidor.application';
+import { DistribuidorMapper } from './modules/distribuidores/application/distribuidor/distribuidor.mapper';
 
 const angular = [
   provideZoneChangeDetection({ eventCoalescing: true }),
@@ -36,6 +39,7 @@ const infraestructure = [
 
   CajaInfrastructure,
   SistemaInfrastructure,
+  DistribuidorInfrastructure,
 ];
 const application = [
   AuthApplication, 
@@ -43,12 +47,14 @@ const application = [
   
   CajaApplication,
   SistemaApplication,
+  DistribuidorApplication,
 ];
 const mappers = [
   ExceptionMapper,
 
   CajaMapper,
   SistemaMapper,
+  DistribuidorMapper,
 ];
 
 export const appConfig: ApplicationConfig = {
