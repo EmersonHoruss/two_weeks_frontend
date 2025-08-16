@@ -45,8 +45,8 @@ export class MenuService {
           {
             label: 'Historial',
             icon: 'history',
-            url: '/caja/historia',
-            title: 'Historia de Caja',
+            url: '/caja/historial',
+            title: 'Historial de Caja',
             foreignToMaterial: false,
           },
         ],

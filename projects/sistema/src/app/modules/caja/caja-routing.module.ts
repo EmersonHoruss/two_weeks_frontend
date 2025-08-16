@@ -5,8 +5,8 @@ import { PageOpenComponent } from './views/pages/page-open/page-open.component';
 import { PageUpdateComponent } from './views/pages/page-update/page-update.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'historia', pathMatch: 'full' },
-  { path: 'historia', component: PageListComponent },
+  { path: '', redirectTo: 'historial', pathMatch: 'full' },
+  { path: 'historial', component: PageListComponent },
   { path: 'abrir', component: PageOpenComponent },
   { path: 'actualizar/:id', component: PageUpdateComponent },
 ];
