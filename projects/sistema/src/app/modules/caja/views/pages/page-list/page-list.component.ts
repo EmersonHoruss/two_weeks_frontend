@@ -84,7 +84,7 @@ export class PageListComponent {
   }
 
   update(id: number) {
-    this.router.navigate(['/caja/actualizar', "id"]);
+    this.router.navigate(['/caja/actualizar', id]);
   }
 
   get dataSource(): Array<CajaDisplay> {
