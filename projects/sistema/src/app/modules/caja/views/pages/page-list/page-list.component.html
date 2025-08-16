@@ -1,1 +1,23 @@
-caja
+<tw-title [hardDeletionEnabled]="false" [isMasculine]="false">
+  <button mat-flat-button color="primary" btnAction (click)="createOrUpdate()">
+    <mat-icon>add</mat-icon>
+    Abrir
+  </button>
+</tw-title>
+
+<tw-container>
+  <div class="page-list-content scrollable-container scroll">
+    <tw-table
+      [metaColumns]="metaColumns"
+      [dataSource]="dataSource"
+      [pluralEntity]="pluralEntity"
+      [loading]="loading"
+    />
+  </div>
+
+  <tw-paginator
+    [length]="response?.totalElements"
+    [pageSize]="response?.pageSize"
+    (onChangePage)="paginate($event)"
+  />
+</tw-container>
