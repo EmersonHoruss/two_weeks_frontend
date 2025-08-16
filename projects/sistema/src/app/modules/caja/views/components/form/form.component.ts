@@ -1,14 +1,17 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
-import {
-  CajaCreateDto,
-  CajaUpdateDto,
-} from '../../../application/caja/caja.dto';
+import { Caja } from '../../../domain/caja/caja';
 
 @Component({
   selector: 'tw-form',
@@ -18,11 +21,17 @@ import {
 })
 export class FormComponent {
   form!: FormGroup;
-  @Input() data: Partial<CajaUpdateDto> | null;
-  @Output() getForm = new EventEmitter<any>();
+  @Input() data: Partial<Caja> | null;
+  @Output() getForm = new EventEmitter<Caja>();
 
   constructor(private fb: FormBuilder) {
     this.initForm();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['data'] && changes['data'].currentValue) {
+      this.form.patchValue(changes['data'].currentValue);
+    }
   }
 
   private initForm() {
@@ -37,13 +46,16 @@ export class FormComponent {
     )}:${pad(now.getSeconds())}${sign}${pad(offset / 60)}:${pad(offset % 60)}`;
 
     this.form = this.fb.group({
-      id: new FormControl(this.data?.id),
+      id: new FormControl(this.data?.properties()?.id),
       fecha: [
-        { value: this.data?.fecha ?? formattedDate, disabled: true },
+        {
+          value: this.data?.properties()?.fecha ?? formattedDate,
+          disabled: true,
+        },
         Validators.required,
       ],
       montoInicial: [
-        this.data?.montoInicial ?? 0,
+        this.data?.properties()?.montoInicial ?? 0,
         [Validators.required, Validators.min(0)],
       ],
     });
@@ -51,8 +63,9 @@ export class FormComponent {
 
   save(): void {
     if (this.form.valid) {
-      const dto: CajaCreateDto = this.form.getRawValue();
-      this.getForm.emit(dto);
+      const { id, fecha, montoInicial } = this.form.getRawValue();
+      const caja = new Caja({ id, fecha, montoInicial });
+      this.getForm.emit(caja);
     }
   }
 }

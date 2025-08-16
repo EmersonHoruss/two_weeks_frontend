@@ -184,6 +184,14 @@ export class MenuService {
   }
 
   getDataPath(currentPath: string): MenuNode {
+    if (currentPath.includes('/caja/actualizar'))
+      return {
+        label: 'Actualizar Caja',
+        icon: 'edit',
+        url: '',
+        title: 'Actualizar Caja',
+        foreignToMaterial: false,
+      };
     return this.getLeafNodes().find((el: MenuNode) => el.url === currentPath);
   }
 }

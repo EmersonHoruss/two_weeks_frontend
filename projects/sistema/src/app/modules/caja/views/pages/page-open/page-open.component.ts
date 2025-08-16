@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { CajaCreateDto } from '../../../application/caja/caja.dto';
 import { MatDialogRef } from '@angular/material/dialog';
 import { LoadingComponent } from '../../../../../shared/components/modals/loading/loading.component';
 import {
@@ -29,12 +28,9 @@ export class PageOpenComponent {
     this.router.navigate(['/caja/historial']);
   }
 
-  save(dto: CajaCreateDto) {
+  save(caja: Caja) {
     const loadingRef: MatDialogRef<LoadingComponent> =
       this.utilsService.showLoading();
-
-    const { fecha, montoInicial } = dto;
-    const caja = new Caja({ fecha, montoInicial });
 
     this.cajaApplication.create(caja).subscribe({
       next: () => {
@@ -42,7 +38,7 @@ export class PageOpenComponent {
 
         this.historical();
       },
-      error: (exception: any) => {
+      error: (exception: ExceptionDto) => {
         loadingRef.close();
         this.utilsService.showInformative(
           OperationType.Creation,
