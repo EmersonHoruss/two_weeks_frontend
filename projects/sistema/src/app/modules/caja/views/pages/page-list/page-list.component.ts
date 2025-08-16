@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MetaColumn } from '../../../../../shared/interfaces/metacolumn.interface';
 import {
+  Direction,
   PageRequestDto,
   RequestDto,
 } from '../../../../../shared/application/dtos/request.dto';
@@ -38,6 +39,8 @@ export class PageListComponent {
   loading: boolean = true;
   pluralEntity: string = 'cajas';
 
+  private readonly QUERY_REQUIRED = 'activated<eq>true';
+
   constructor(
     private readonly cajaApplication: CajaApplication,
     private readonly router: Router
@@ -52,6 +55,7 @@ export class PageListComponent {
         page: environment.pageIndex,
         size: environment.pageSize,
       },
+      sort: [{ field: 'fecha', direction: Direction.DESC }],
       query: '',
     };
   }
