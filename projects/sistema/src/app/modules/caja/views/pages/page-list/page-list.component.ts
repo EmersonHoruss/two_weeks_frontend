@@ -10,6 +10,7 @@ import { environment } from '../../../../../../environments/environment';
 import { CajaApplication } from '../../../application/caja/caja.application';
 import { ExceptionDto } from '../../../../../shared/application/dtos/exception.dto';
 import { Router } from '@angular/router';
+import { CajaShowDto } from '../../../application/caja/caja.dto';
 
 @Component({
   selector: 'tw-page-list',
@@ -78,8 +79,12 @@ export class PageListComponent {
     this.loadData();
   }
 
-  createOrUpdate() {
+  open() {
     this.router.navigate(['/caja/abrir']);
+  }
+
+  update(id: number) {
+    this.router.navigate(['/caja/actualizar', "id"]);
   }
 
   get dataSource(): Array<CajaDisplay> {
