@@ -1,0 +1,28 @@
+<form [formGroup]="form" (ngSubmit)="save()" class="form">
+  <!-- Fecha -->
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Fecha</mat-label>
+    <input matInput formControlName="fecha" readonly />
+  </mat-form-field>
+
+  <!-- Monto Inicial -->
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Monto Inicial</mat-label>
+    <input matInput type="number" formControlName="montoInicial" />
+    <mat-error *ngIf="form.get('montoInicial')?.hasError('required')">
+      El monto inicial es obligatorio
+    </mat-error>
+    <mat-error *ngIf="form.get('montoInicial')?.hasError('min')">
+      El monto inicial debe ser igual o mayor a 0
+    </mat-error>
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="form.invalid"
+  >
+    Crear Caja
+  </button>
+</form>
