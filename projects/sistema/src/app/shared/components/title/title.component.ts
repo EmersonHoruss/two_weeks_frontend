@@ -35,7 +35,7 @@ export class TitleComponent {
     } else {
       currentPath = `/${this.activatedRoute.snapshot.pathFromRoot[1].routeConfig?.path}`;
     }
-    this.menuItem = menuService.getDataPath(currentPath);
+    this.menuItem = menuService.getDataPath(fullPathStr);
   }
 
   switchPages() {
