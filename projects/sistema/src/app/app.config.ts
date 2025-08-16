@@ -15,6 +15,9 @@ import { StorageApplication } from './core/application/storage.application';
 
 import { ExceptionInterceptor } from './shared/interceptors/exception.interceptor';
 import { ExceptionMapper } from './shared/application/mapper/exception.mapper';
+import { CajaApplication } from './modules/caja/application/caja/caja.application';
+import { CajaInfrastructure } from './modules/caja/infraestructure/caja/caja.infrastructure';
+import { CajaMapper } from './modules/caja/application/caja/caja.mapper';
 
 const angular = [
   provideZoneChangeDetection({ eventCoalescing: true }),
@@ -24,9 +27,23 @@ const angular = [
 ];
 const material = [{ provide: MatPaginatorIntl, useClass: PaginatorService }];
 const layout = [{ provide: LAYOUT_TOKEN, useValue: layoutConstant }];
-const infraestructure = [AuthInfrastructure, StorageInfrastructure];
-const application = [AuthApplication, StorageApplication];
-const mappers = [ExceptionMapper];
+const infraestructure = [
+  AuthInfrastructure, 
+  StorageInfrastructure,
+
+  CajaInfrastructure
+];
+const application = [
+  AuthApplication, 
+  StorageApplication, 
+  
+  CajaApplication
+];
+const mappers = [
+  ExceptionMapper,
+
+  CajaMapper
+];
 
 export const appConfig: ApplicationConfig = {
   providers: [
