@@ -36,10 +36,10 @@ export class MenuService {
         icon: 'account_balance_wallet',
         children: [
           {
-            label: 'Abrir/Cerrar',
+            label: 'Abrir',
             icon: 'lock_open',
             url: '/caja/abrir',
-            title: 'Abrir/Cerrar Caja',
+            title: 'Abrir Caja',
             foreignToMaterial: false,
           },
           {
