@@ -23,7 +23,7 @@ export class CajaInfrastructure
   override setActivation(
     id: number,
     activation: boolean
-  ): Observable<ResponseDto<CajaShowDto>> {
+  ): Observable<null> {
     throw new Error('Method not supported for caja: setActivation');
   }
 }

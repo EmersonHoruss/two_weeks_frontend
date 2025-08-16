@@ -15,38 +15,17 @@ export class BaseApplication<
 > {
   constructor(
     private readonly repository: Repository,
-    private readonly mapper: IMapper<
-      Entity,
-      CreateDto,
-      UpdateDto,
-      ShowDto
-    >
+    private readonly mapper: IMapper<Entity, CreateDto, UpdateDto, ShowDto>
   ) {}
 
-  create(entity: Entity): Observable<Response<Entity>> {
+  create(entity: Entity): Observable<null> {
     const createDto: CreateDto = this.mapper.toCreateDto(entity);
-    return this.repository
-      .create(createDto)
-      .pipe(
-        map((response: ResponseDto<ShowDto>) =>
-          new ResponseMapper<Entity, ShowDto>(this.mapper.toEntity).toEntity(
-            response
-          )
-        )
-      );
+    return this.repository.create(createDto);
   }
 
-  update(entity: Entity): Observable<Response<Entity>> {
+  update(entity: Entity): Observable<null> {
     const updateDto: UpdateDto = this.mapper.toUpdateDto(entity);
-    return this.repository
-      .update(updateDto)
-      .pipe(
-        map((response: ResponseDto<ShowDto>) =>
-          new ResponseMapper<Entity, ShowDto>(this.mapper.toEntity).toEntity(
-            response
-          )
-        )
-      );
+    return this.repository.update(updateDto);
   }
 
   listOne(id: number): Observable<Response<Entity>> {
@@ -74,15 +53,7 @@ export class BaseApplication<
       );
   }
 
-  setActivation(id: number, activation: boolean): Observable<Response<Entity>> {
-    return this.repository
-      .setActivation(id, activation)
-      .pipe(
-        map((response: ResponseDto<ShowDto>) =>
-          new ResponseMapper<Entity, ShowDto>(this.mapper.toEntity).toEntity(
-            response
-          )
-        )
-      );
+  setActivation(id: number, activation: boolean): Observable<null> {
+    return this.repository.setActivation(id, activation);
   }
 }

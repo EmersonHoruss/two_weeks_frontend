@@ -13,12 +13,12 @@ export abstract class BaseInfrastructure<CreateDto, UpdateDto, ShowDto> {
     this.apiUrl = this.apiUrl + this.endpoint;
   }
 
-  create(createDto: CreateDto): Observable<ResponseDto<ShowDto>> {
-    return this.http.post<ResponseDto<ShowDto>>(this.apiUrl, createDto);
+  create(createDto: CreateDto): Observable<null> {
+    return this.http.post<null>(this.apiUrl, createDto);
   }
 
-  update(updateDto: UpdateDto): Observable<ResponseDto<ShowDto>> {
-    return this.http.put<ResponseDto<ShowDto>>(this.apiUrl, updateDto);
+  update(updateDto: UpdateDto): Observable<null> {
+    return this.http.put<null>(this.apiUrl, updateDto);
   }
 
   listOne(id: number): Observable<ResponseDto<ShowDto>> {
@@ -31,11 +31,8 @@ export abstract class BaseInfrastructure<CreateDto, UpdateDto, ShowDto> {
       : this.http.get<ResponseDto<ShowDto>>(this.apiUrl);
   }
 
-  setActivation(
-    id: number,
-    activation: boolean
-  ): Observable<ResponseDto<ShowDto>> {
+  setActivation(id: number, activation: boolean): Observable<null> {
     const deleteObj = { id, activated: activation };
-    return this.http.patch<ResponseDto<ShowDto>>(this.apiUrl, deleteObj);
+    return this.http.patch<null>(this.apiUrl, deleteObj);
   }
 }
