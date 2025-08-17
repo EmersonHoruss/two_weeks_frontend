@@ -24,6 +24,9 @@ import { SistemaInfrastructure } from './modules/sistema/infraestructure/sistema
 import { DistribuidorInfrastructure } from './modules/distribuidores/infraestructure/distribuidor/distribuidor.infrastructure';
 import { DistribuidorApplication } from './modules/distribuidores/application/distribuidor/distribuidor.application';
 import { DistribuidorMapper } from './modules/distribuidores/application/distribuidor/distribuidor.mapper';
+import { ProductoInfrastructure } from './modules/productos/infraestructure/producto/producto.infrastructure';
+import { ProductoApplication } from './modules/productos/application/producto/producto.application';
+import { ProductoMapper } from './modules/productos/application/producto/producto.mapper';
 
 const angular = [
   provideZoneChangeDetection({ eventCoalescing: true }),
@@ -34,20 +37,22 @@ const angular = [
 const material = [{ provide: MatPaginatorIntl, useClass: PaginatorService }];
 const layout = [{ provide: LAYOUT_TOKEN, useValue: layoutConstant }];
 const infraestructure = [
-  AuthInfrastructure, 
+  AuthInfrastructure,
   StorageInfrastructure,
 
   CajaInfrastructure,
   SistemaInfrastructure,
   DistribuidorInfrastructure,
+  ProductoInfrastructure,
 ];
 const application = [
-  AuthApplication, 
-  StorageApplication, 
-  
+  AuthApplication,
+  StorageApplication,
+
   CajaApplication,
   SistemaApplication,
   DistribuidorApplication,
+  ProductoApplication,
 ];
 const mappers = [
   ExceptionMapper,
@@ -55,6 +60,7 @@ const mappers = [
   CajaMapper,
   SistemaMapper,
   DistribuidorMapper,
+  ProductoMapper,
 ];
 
 export const appConfig: ApplicationConfig = {
